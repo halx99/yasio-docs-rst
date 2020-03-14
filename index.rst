@@ -3,7 +3,7 @@ yasio 文档
 
 *yasio 是一个轻量级跨平台的异步socket库，专注于客户端和基于各种游戏引擎的游戏客户端网络服务, 支持windows & linux & apple & android & win10-universal。*
 
-|ImageRelLink|_ |OtherBuildStatus|_ |WinBuildStatus|_ 
+|ImageRelLink|_
 
 * `yasio GitHub <https://github.com/yasio/yasio>`_
 * yasio 文档
@@ -91,8 +91,21 @@ yasio 借鉴著名的boost网络库asio, 在保持轻量级的情况下，具备
    getchar();
  }
 
-更多使用实例，请参考 `tests <https://github.com/yasio/yasio/tests/>`_ & `examples <https://github.com/yasio/yasio/examples/>`_
+更多使用实例，请参考 `tests <https://github.com/yasio/yasio/tree/master/tests>`_ & `examples <https://github.com/yasio/yasio/tree/master/tests>`_ :
 
+* tests:
+
+  * `echo_server <https://github.com/yasio/yasio/tree/master/tests/echo_server>`_: TCP/UDP回射服务器
+  * `echo_client <https://github.com/yasio/yasio/tree/master/tests/echo_client>`_: TCP, UDP回射客户端
+  * `ssltest <https://github.com/yasio/yasio/tree/master/tests/ssl>`_: SSL测试客户端，请求github.com主页并打印返回数据
+  * `tcptest <https://github.com/yasio/yasio/tree/master/tests/tcp>`_: TCP测试程序
+  * `kcptest <https://github.com/yasio/yasio/tree/master/tests/kcp>`_: KCP测试程序
+  * `mcast <https://github.com/yasio/yasio/tree/master/tests/mcast>`_: 组播测试程序
+
+* examples:
+
+  * `ftp_server <https://github.com/yasio/yasio/tree/master/example/ftp_server>`_: 基于yasio实现的仅支持下载的ftp服务器，`点击 <ftp://ftp.x-studio.net>`_ 访问
+  * `lua <https://github.com/yasio/yasio/tree/master/example/ftp_server>`_: lua样例程序，包含并发http请求，TCP拆包实例代码
 
 构建 tests & examples
 ----------------------
@@ -107,11 +120,5 @@ yasio 借鉴著名的boost网络库asio, 在保持轻量级的情况下，具备
   cmake ..
   cmake --build . --config Debug
 
-.. |ImageRelLink| image:: https://img.shields.io/badge/release-v3.31.3-blue.svg
+.. |ImageRelLink| image:: https://img.shields.io/badge/release-v3.33.0-blue.svg
 .. _ImageRelLink: https://github.com/yasio/yasio/releases
-
-.. |OtherBuildStatus| image:: https://travis-ci.com/yasio/yasio.svg?branch=master
-.. _OtherBuildStatus: https://github.com/yasio/yasio/releases
-
-.. |WinBuildStatus| image:: (https://ci.appveyor.com/api/projects/status/d6qjfygtw2ewt9pf/branch/master?svg=true
-.. _WinBuildStatus: https://ci.appveyor.com/project/halx99/yasio
