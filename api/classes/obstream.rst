@@ -59,3 +59,25 @@ obstream
      - 静态方法，在指定地址写入数值数据，会自动转化为网络字节序
    * - obstream::sub
      - 截取子stream，返回新obstream对象
+
+Example
+--------------------------
+.. tabs::
+ .. code-tab:: cpp
+
+  obstream obs;
+
+  // 内存布局|-8bits-|
+  obs.write_i<int8_t>(12);
+  
+  // 内存布局|-8bits-|-32bits-|
+  obs.push32(); 
+  
+  // 内存布局|-8bits-|-32bits-|-16bits-|
+  obs.write_i<int16_t>(52013);
+  
+  // 内存布局|-8bits-|-32bits-|-16bits-|-8bits(length of the string)-|-88bits(the string)-|
+  obs.write_v8("hello world");
+  
+  // 将整包长度字节数写入最近一次push保留的4字节内存，完成封包，内存布局不变
+  obs.pop32(obs.length());

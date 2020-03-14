@@ -58,3 +58,20 @@ ibstream继承了所有ibstream_view关于二进制读取的接口。
      - 获取字节数据指针
    * - ibstream_view::sread_i
      - 静态方法，在指定地址读取数值数据，会自动转化为网络字节序
+
+
+Example
+--------------------------
+.. tabs::
+ .. code-tab:: cpp
+
+  ibstream_view ibs(event->packet().data(), event->packet().size());
+  
+  // 读取1字节整数
+  int8_t cmd = ibs.read_i<int8_t>();
+  
+  // 跳过4字节长度域
+  ibs.seek(4, SEEK_CUR);
+  
+  int16_t seq = ibs.read_i<int16_t>();
+  cxx17::string_view content = ibs.read_v();
