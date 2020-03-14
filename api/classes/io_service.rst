@@ -18,7 +18,7 @@ yasio的核心类，提供TCP,UDP,KCP异步网络服务，以独立线程处理�
 
    * - 函数名
      - 函数说明
-   * - :ref:`io_service::io_service <io_service>`
+   * - :ref:`io_service`
      - 构造io_service对象
 
 公共方法:
@@ -29,7 +29,7 @@ yasio的核心类，提供TCP,UDP,KCP异步网络服务，以独立线程处理�
 
    * - 函数名
      - 函数说明
-   * - io_service::start_service
+   * - :ref:`start_service`
      - 启动网络服务线程
    * - io_service::stop_service
      - 停止网络服务线程
@@ -58,6 +58,7 @@ yasio的核心类，提供TCP,UDP,KCP异步网络服务，以独立线程处理�
 
 
 .. _io_service:
+
 io_service::io_service
 ------------------
 构造io_service对象，共有4个重载版本
@@ -83,4 +84,31 @@ Example
   };
   io_service s4(hosts, YASIO_ARRAYSIZE(hosts)); // s4支持2个信道
 
+
+.. _start_service:
+
+io_service::start_service
+------------------
+启动网络服务线程
+
+.. code-block:: cpp
+
+ void start_service(io_event_cb_t cb)
+
+Example
+^^^^^^^^^^^^^^^^^^
+.. tabs::
+ .. code-tab:: cpp
+
+  auto service = yasio_shared_service(io_hostent{host="ip138.com", port=80});
+  service->start_service([](event_ptr&& ev) {
+    auto kind = event->kind();
+    if (kind == YEK_CONNECT_RESPONSE)
+    {
+      if (event->status() == 0)
+        printf("[%d] connect succeed.\n", event->cindex());
+      else
+        printf("[%d] connect failed!\n", event->cindex());
+    }
+  });
 
