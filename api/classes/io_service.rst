@@ -52,7 +52,7 @@ yasio的核心类，提供TCP,UDP,KCP异步网络服务，以独立线程处理�
      - 启动定时器
    * - :ref:`builtin_resolv`
      - 内置域名解析
-   * - :ref:`cindex_to_channel`
+   * - :ref:`cindex_to_handle`
      - 根据信道索引获取信道对象  
 
 
@@ -125,7 +125,7 @@ io_service::stop_service
 
 io_service::is_running
 ------------------
-启动网络服务线程
+判断网络服务线程是否运行
 
 .. code-block:: cpp
 
@@ -232,7 +232,7 @@ Example
 
 io_service::reopen
 ------------------
-打开信道
+重新打开传输会话
 
 .. code-block:: cpp
 
@@ -308,7 +308,7 @@ Parameters
 
 Remark
 ^^^^^^^^^^^^^^^^^
-只用用于非未使用connect建立过4元组绑定的UDP socket.
+只能用于非未使用connect绑定过4元组的UDP socket.
 
 
 .. _schedule:
@@ -377,9 +377,9 @@ Return Value
 ^^^^^^^^^^^^^^^^^
 返回0成功， -1失败
 
-.. _cindex_to_channel:
+.. _cindex_to_handle:
 
-io_service::cindex_to_channel
+io_service::cindex_to_handle
 ------------------
 根据信道索引获取信道对象
 
