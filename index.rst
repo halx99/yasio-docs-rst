@@ -133,7 +133,6 @@ API文档:
     :glob:
 
     api/index
-    api/classes
 
 
 .. |ImageRelLink| image:: https://img.shields.io/badge/release-v3.33.0-blue.svg
