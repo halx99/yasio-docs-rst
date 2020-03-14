@@ -5,9 +5,9 @@ yasio CLASSES
     :maxdepth: 2
     :glob:
     
-    classes/io_service
-    classes/io_channel
-    classes/io_transport
-    classes/ibstream
-    classes/obstream
-    classes/xxsocket
+    io_service
+    io_channel
+    io_transport
+    ibstream
+    obstream
+    xxsocket
