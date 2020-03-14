@@ -10,7 +10,6 @@ yasio 文档
 
   + `English <https://docs.yasio.org/en/latest/>`_
   + `简体中文 <https://docs.yasio.org/zh_CN/latest/>`_
-  + `下载PDF <https://readthedocs.org/projects/yasio-docs/downloads/pdf/latest/>`_
 
 * yasio官网：`https://yasio.org/ <https://yasio.org/>`_
 

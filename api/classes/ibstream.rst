@@ -49,7 +49,7 @@ ibstream继承了所有ibstream_view关于二进制读取的接口。
    * - ibstream_view::read_byte
      - 读取一个字节
    * - ibstream_view::read_bytes
-     - 读取字节流数据，不含长度域
+     - 读取字节流数据，无长度域
    * - ibstream_view::seek
      - 移动流指针，和系统文件io lseek用法相同
    * - ibstream_view::length
