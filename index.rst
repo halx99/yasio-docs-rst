@@ -131,7 +131,9 @@ API文档:
 .. toctree::
     :maxdepth: 2
     :glob:
+
     api/index
+    api/classes
 
 
 .. |ImageRelLink| image:: https://img.shields.io/badge/release-v3.33.0-blue.svg
