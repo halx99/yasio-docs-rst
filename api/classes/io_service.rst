@@ -2,7 +2,6 @@ io_service
 ===============================
 yasio的核心类，提供TCP,UDP,KCP异步网络服务，以独立线程处理所有网络事件。
 
-
 命名空间
 ---------------------
 ``namespace yasio::inet``
@@ -37,7 +36,7 @@ yasio的核心类，提供TCP,UDP,KCP异步网络服务，以独立线程处理�
      - 判断网络线程是否运行
    * - :ref:`dispatch`
      - 在调用者线程分派网络事件（包，连接响应，连接丢失）
-   * - io_service::set_option
+   * - :ref:`set_option`
      - 设置选项
    * - io_service::open
      - 打开信道
@@ -155,3 +154,80 @@ Example
   // 通常在OpenGL或cocos和unity等游戏引擎渲染线程调用，
   // 以便在特定网络消息回调里安全地更新界面逻辑。
   yasio_shared_service()->dispatch(128); 
+
+.. _set_option:
+
+io_service::set_option
+------------------
+设置选项, 是可变参接口，根据opt不同，参数个数和类型不同
+
+.. code-block:: cpp
+
+ void set_option(int opt, ...)
+
+Parameters
+^^^^^^^^^^^^^^^^^
+| *opt*
+| 选项类型，以 ``YOPT_`` 开头的枚举值, 详见: :ref:`options`
+
+Example
+^^^^^^^^^^^^^^^^^^
+.. tabs::
+ .. code-tab:: cpp
+
+  yasio_shared_service()->set_option(YOPT_S_SSL_CACERT, "cacert.pem"); // 设置ssl客户端证书
+
+.. _options:
+
+io_service options
+------------------
+
+
+.. list-table:: 
+   :widths: auto
+   :header-rows: 1
+
+   * - 枚举值
+     - 参数说明
+   * - YOPT_S_DEFERRED_EVENT
+     - 设置是否使用事件队列延迟分派网络事件，参数类型int，默认值1
+   * - YOPT_S_RESOLV_FN
+     - 设置自定义域名解析回调，参数类型resolv_fn_t*, resolv_fn_t原型: 
+       int resolv_fn(std::vector<ip::endpoint>&, const char*, unsigned short)
+   * - YOPT_S_PRINT_FN
+     - 设置打印函数, 参数类型print_fn_t*, 原型: void print_fn(const char*)
+   * - YOPT_S_EVENT_CB
+     - 设置网络事件回调, 参数类型io_event_cb_t*
+   * - YOPT_S_TCP_KEEPALIVE
+     - 设置TCP底层心跳, 参数 idle:int(7200), interal:int(75), probes:int(10)
+   * - YOPT_S_NO_NEW_THREAD
+     - 设置是否禁用线程，直接在阻塞在start_service调用者线程处理网络事件，参数类型int, 默认值0
+   * - YOPT_S_SSL_CACERT
+     - 设置ssl客户端证书，参数类型const char*
+   * - YOPT_S_CONNECT_TIMEOUT
+     - 设置TCP客户端连接超时，参数类型int，默认值10(s)
+   * - YOPT_S_DNS_CACHE_TIMEOUT
+     - 设置DNS解析缓存超时时间，参数类型int, 默认值600(s)
+   * - YOPT_S_DNS_QUERIES_TIMEOUT
+     - 设置DNS解析超时时间，参数类型int，默认值10(s)，仅当启用c-ares异步域名解析时才有效
+   * - YOPT_C_LFBFD_FN
+     - 设置信道自定义长度解析函数，用于TCP底层拆包，参数cindex:int, decode_len_fn_t*
+   * - YOPT_C_LFBFD_PARAMS
+     - 设置信道基于netty的LengthBasedFrameDecoder拆包参数，参数
+       cindex:int, max_frame_length:int, length_field_offset:int, length_field_length:int, length_adjustment:int
+   * - YOPT_C_LOCAL_PORT
+     - 指定信道本地绑定端口，参数cindex:int, port:int，默认值0  
+   * - YOPT_C_REMOTE_HOST
+     - 设置信道远程主机ip， 参数cindex:int, ip:const char*，格式为：点分十进制
+   * - YOPT_C_REMOTE_PORT
+     - 设置信道远程主机端口， 参数cindex:int, port:int
+   * - YOPT_C_REMOTE_ENDPOINT
+     - 设置信道远程主机ip和端口， 参数cindex:int, ip:const char*, port:int
+   * - YOPT_C_MOD_FLAGS
+     - 修改信道标记为，参数cindex:int, flagsToAdd:int, flagsToRemove:int
+   * - YOPT_C_ENABLE_MCAST
+     - 启用信道组播，参数cindex:int, multi_addr:const char*, loopback:int  
+   * - YOPT_C_DISABLE_MCAST
+     - 禁用信道组播，参数cindex:int
+   * - YOPT_SOCKOPT
+     - 设置io对象socket选项，参数obj:io_base*,level:int,optname:int,optval:int,optlen:int
