@@ -1,4 +1,4 @@
-CLASSES
+yasio CLASSES
 ====================
 
 .. toctree::

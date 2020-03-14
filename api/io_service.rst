@@ -18,15 +18,8 @@ namespace yasio::inet
 
    * - 函数名
      - 函数说明
-   * - io_service::io_service()
-     - 构造一个仅支持一个信道的io_service对象
-   * - io_service::io_service(int channel_count)
-     - 构造支持指定信道个数的io_service对象，注意不能超过系统定义的select支持最大值
-   * - io_service::io_service(const io_hostent& channel_eps)
-     - 构造一个仅支持一个信道的io_service对象, 
-       并初始化信道ip和端口
-   * - io_service::io_service(const io_hostent* channel_eps, int channel_count)
-     - 根据ip和端口列表构造支持相应信道个数的io_service对象。
+   * - io_service::io_service
+     - 构造io_service对象
 
 公共方法:
 
@@ -36,13 +29,29 @@ namespace yasio::inet
 
    * - 函数名
      - 函数说明
-   * - io_service::start_service(io_event_cb_t cb)
+   * - io_service::start_service
      - 启动网络服务线程
-   * - io_service::stop_service()
+   * - io_service::stop_service
      - 停止网络服务线程
-   * - io_service::is_running()
+   * - io_service::is_running
      - 判断网络线程是否运行
-   * - io_service::dispatch(int max_count)
+   * - io_service::dispatch
      - 在调用者线程分派网络事件（包，连接响应，连接丢失）
-   * - io_service::set_option(int opt, ...)
+   * - io_service::set_option
      - 设置选项
+   * - io_service::open
+     - 打开信道
+   * - io_service::reopen
+     - 重新打开Transport
+   * - io_service::close
+     - 关闭信道或Transport
+   * - io_service::write
+     - 异步写入数据
+   * - io_service::write_to
+     - 异步写入数据, 仅用于非绑定状态的UDP
+   * - io_service::schedule
+     - 启动定时器
+   * - io_service::builtin_resolv
+     - 内置域名解析
+   * - io_service::cindex_to_channel
+     - 根据信道索引获取信道对象  
