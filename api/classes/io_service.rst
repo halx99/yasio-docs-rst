@@ -190,9 +190,9 @@ Example
                       0 // lengthAdjustment：如果长度字段字节大小包含包头，则为0， 否则，这里=包头大小
   );
 
-// 对于没有包长度字段设计的协议，例如http， 设置包长度字段为-1，
-// 那么底层服务收到多少字节就会传回给上层多少字节
-service->set_option(YOPT_C_LFBFD_PARAMS, 1, 65535, -1, 0, 0);
+  // 对于没有包长度字段设计的协议，例如http， 设置包长度字段为-1，
+  // 那么底层服务收到多少字节就会传回给上层多少字节
+  service->set_option(YOPT_C_LFBFD_PARAMS, 1, 65535, -1, 0, 0);
 
 .. _open:
 
