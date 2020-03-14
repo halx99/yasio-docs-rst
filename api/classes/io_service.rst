@@ -18,7 +18,7 @@ yasio的核心类，提供TCP,UDP,KCP异步网络服务，以独立线程处理�
 
    * - 函数名
      - 函数说明
-   * - io_service::io_service
+   * - `io_service::io_service <#io_service::io_service>`_
      - 构造io_service对象
 
 公共方法:
