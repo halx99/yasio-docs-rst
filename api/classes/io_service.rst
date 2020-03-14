@@ -38,21 +38,21 @@ yasio的核心类，提供TCP,UDP,KCP异步网络服务，以独立线程处理�
      - 在调用者线程分派网络事件（包，连接响应，连接丢失）
    * - :ref:`set_option`
      - 设置选项
-   * - io_service::open
+   * - :ref:`open`
      - 打开信道
-   * - io_service::reopen
+   * - :ref:`reopen`
      - 重新打开Transport
-   * - io_service::close
+   * - :ref:`close`
      - 关闭信道或Transport
-   * - io_service::write
+   * - :ref:`write`
      - 异步写入数据
-   * - io_service::write_to
+   * - :ref:`write_to`
      - 异步写入数据, 仅用于非绑定状态的UDP
-   * - io_service::schedule
+   * - :ref:`schedule`
      - 启动定时器
-   * - io_service::builtin_resolv
+   * - :ref:`builtin_resolv`
      - 内置域名解析
-   * - io_service::cindex_to_channel
+   * - :ref:`cindex_to_channel`
      - 根据信道索引获取信道对象  
 
 
@@ -174,14 +174,203 @@ Example
 ^^^^^^^^^^^^^^^^^^
 .. tabs::
  .. code-tab:: cpp
+  
+  io_hostent hosts[] = {
+    {"192.168.1.66", 20336},
+    {"192.168.1.88", 20337},
+  };
+  io_service* service = new io_service(hosts, YASIO_ARRAYSIZE(hosts));
+  
+  // 对于有包长度字段的协议，对于tcp自定义二进制协议，强烈建议设计包长度字段，并设置此选项，业务无须关心粘包问题
+  service->set_option(YOPT_C_LFBFD_PARAMS,
+                      0,     // channelIndex, 信道索引
+                      65535, // maxFrameLength, 最大包长度
+                      0,     // lenghtFieldOffset, 长度字段偏移，相对于包起始字节
+                      4, // lengthFieldLength, 长度字段大小，支持1字节，2字节，3字节，4字节
+                      0 // lengthAdjustment：如果长度字段字节大小包含包头，则为0， 否则，这里=包头大小
+  );
 
-  yasio_shared_service()->set_option(YOPT_S_SSL_CACERT, "cacert.pem"); // 设置ssl客户端证书
+// 对于没有包长度字段设计的协议，例如http， 设置包长度字段为-1，
+// 那么底层服务收到多少字节就会传回给上层多少字节
+service->set_option(YOPT_C_LFBFD_PARAMS, 1, 65535, -1, 0, 0);
+
+.. _open:
+
+io_service::open
+------------------
+打开信道
+
+.. code-block:: cpp
+
+ void open(size_t cindex, int kind)
+
+Parameters
+^^^^^^^^^^^^^^^^^
+| *cindex*
+| 信道索引
+| 
+| *kind*
+| 信道类型，可取值: 
+    ``YCK_TCP_CLIENT``,
+    ``YCK_TCP_SERVER``,
+    ``YCK_UDP_CLIENT``,
+    ``YCK_UDP_SERVER``,
+    ``YCK_KCP_CLIENT``,
+    ``YCK_KCP_SERVER``,
+    ``YCK_SSL_CLIENT``
+
+Example
+^^^^^^^^^^^^^^^^^^
+.. tabs::
+ .. code-tab:: cpp
+
+  // 将信道0作为TCP客户端打开，发起TCP三次握手和服务器建立连接
+  yasio_shared_service()->open(0, YCK_TCP_CLIENT); 
+
+
+.. _reopen:
+
+io_service::reopen
+------------------
+打开信道
+
+.. code-block:: cpp
+
+ void reopen(transport_handle_t transport)
+
+Parameters
+^^^^^^^^^^^^^^^^^
+| *transport*
+| 传输会话
+
+
+.. _close:
+
+io_service::close
+------------------
+关闭信道或传输会话
+
+.. code-block:: cpp
+
+ void close(transport_handle_t transport)
+ void close(int cindex)
+
+Parameters
+^^^^^^^^^^^^^^^^^
+| *transport*
+| 传输会话句柄
+
+
+.. _write:
+
+io_service::close
+------------------
+异步发送数据
+
+.. code-block:: cpp
+
+ int write(transport_handle_t thandle, std::vector<char> buffer,
+                        std::function<void()> handler = nullptr)
+
+Parameters
+^^^^^^^^^^^^^^^^^
+| *thandle*
+| 传输会话句柄
+| 
+| *buffer*
+| 要发送的数据
+| 
+| *handler*
+| 发送完成回调
+
+
+.. _write_to:
+
+io_service::close
+------------------
+非阻塞发送UDP数据
+
+.. code-block:: cpp
+
+ int write_to(transport_handle_t thandle, std::vector<char> buffer,
+                           const ip::endpoint& to)
+
+Parameters
+^^^^^^^^^^^^^^^^^
+| *thandle*
+| 传输会话句柄
+| 
+| *buffer*
+| 要发送的数据
+| 
+| *to*
+| 发送远端地址
+
+Remark
+^^^^^^^^^^^^^^^^^
+只用用于非未使用connect建立过4元组绑定的UDP socket.
+
+
+.. _schedule:
+
+io_service::schedule
+------------------
+注册定时器
+
+.. code-block:: cpp
+
+ highp_timer_ptr schedule(const std::chrono::microseconds& duration, timer_cb_t cb)
+
+Parameters
+^^^^^^^^^^^^^^^^^
+| *duration*
+| 指定定时器超时时间
+| 
+| *cb*
+| 定时器超时回调函数
+
+Return
+^^^^^^^^^^^^^^^^^^
+定时器引用计数的智能指针， 用户可持有此指针对定时器进行操作
+
+Example
+^^^^^^^^^^^^^^^^^^
+.. tabs::
+ .. code-tab:: cpp
+
+  // 注册一个3秒后超时的一次性计时器，超时后定时器会被自动销毁
+  yasio_shared_service()->schedule(std::chrono::seconds(3), []()->bool{
+    printf("time called!\n");
+    return true;
+  });
+
+  // 注册一个每隔5秒循环执行的计时器
+  auto loopTimer = yasio_shared_service()->schedule(std::chrono::seconds(5), []()->bool{
+    printf("time called!\n");
+    return false;
+  });
+
+
+.. _cindex_to_channel:
+
+io_service::cindex_to_channel
+------------------
+根据信道索引获取信道对象
+
+.. code-block:: cpp
+
+ io_channel* cindex_to_handle(size_t cindex) const
+
+Parameters
+^^^^^^^^^^^^^^^^^
+| *cindex*
+| 信道索引
+
 
 .. _options:
 
 io_service options
 ------------------
-
 
 .. list-table:: 
    :widths: auto
