@@ -125,6 +125,12 @@ yasio 借鉴著名的boost网络库asio, 在保持轻量级的情况下，具备
   cmake ..
   cmake --build . --config Debug
 
+yasio 异步网络服务的三剑客
+------------------------
+* io_service： 大剑客， 管理其他两个核心对象，并内部开启独立线程用于网络服务
+* io_channel: 二剑客，负责连接管理，建立，关闭，重连
+* io_transport: 三剑客，用于数据传输会话，类似文件句柄，有io_service::write写入数据
+
 API文档:
 ^^^^^
 
