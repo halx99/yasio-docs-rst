@@ -263,7 +263,7 @@ Parameters
 
 .. _write:
 
-io_service::close
+io_service::write
 ------------------
 异步发送数据
 
@@ -286,7 +286,7 @@ Parameters
 
 .. _write_to:
 
-io_service::close
+io_service::write_to
 ------------------
 非阻塞发送UDP数据
 
@@ -329,7 +329,7 @@ Parameters
 | *cb*
 | 定时器超时回调函数
 
-Return
+Return Value
 ^^^^^^^^^^^^^^^^^^
 定时器引用计数的智能指针， 用户可持有此指针对定时器进行操作
 
@@ -350,6 +350,32 @@ Example
     return false;
   });
 
+
+.. _builtin_resolv:
+
+io_service::builtin_resolv
+------------------
+内置域名解析， 会自动判断本地主机ipv6网络环境情况
+
+.. code-block:: cpp
+
+ int builtin_resolv(std::vector<ip::endpoint>& endpoints, const char* hostname,
+                                 unsigned short port = 0)
+
+Parameters
+^^^^^^^^^^^^^^^^^
+| *endpoints*
+| 存储域名解析结果地址列表
+| 
+| *hostname*
+| 域名
+| 
+| *port*
+| 端口
+
+Return Value
+^^^^^^^^^^^^^^^^^
+返回0成功， -1失败
 
 .. _cindex_to_channel:
 
