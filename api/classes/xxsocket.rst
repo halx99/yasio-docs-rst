@@ -1,6 +1,6 @@
 xxsocket
 =====================
-xxsocket是跨平台socket工具类， 是yasio网络库的起源, 支持C++11 move语义。
+xxsocket是跨平台socket工具类， 屏蔽了个操作系统平台差异，提供统一接口， 是yasio网络库的起源, 支持C++11 move语义。
 
 命名空间
 ---------------------
@@ -108,6 +108,17 @@ xxsocket是跨平台socket工具类， 是yasio网络库的起源, 支持C++11 m
      - 获取最近socket错误码
    * - xxsocket::set_last_errno
      - 设置最近socket错误码
-     
-     
-    
+   * - xxsocket::strerror
+     - 获取socket错误码的文本描述信息
+   * - xxsocket::gai_strerror
+     - 获取getaddrinfo错误码的文本描述信息
+   * - xxsocket::resolve
+     - 静态方法，域名解析, 解析所有地址
+   * - xxsocket::resolve_v4
+     - 静态方法，域名解析, 解析ipv4地址
+   * - xxsocket::resolve_v6
+     - 静态方法，域名解析, 解析ipv6地址
+   * - xxsocket::resolve_v4to6
+     - 静态方法，域名解析, 只解析ipv4地址，并根据V4MAPPED规则转换为ipv6地址
+   * - xxsocket:: resolve_tov6
+     - 静态方法，域名解析, 解析所有地址，但ipv4地址会根据V4MAPPED规则转换为ipv6地址
