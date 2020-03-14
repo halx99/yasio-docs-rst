@@ -26,4 +26,4 @@ io_event
    * - io_event::transport
      - 获取事件当前的传输会话句柄
    * - io_event::timestamp
-     - 获取事件产生的微妙级时间戳
+     - 获取事件产生的微秒级时间戳
