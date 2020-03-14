@@ -31,11 +31,11 @@ yasio的核心类，提供TCP,UDP,KCP异步网络服务，以独立线程处理�
      - 函数说明
    * - :ref:`start_service`
      - 启动网络服务线程
-   * - io_service::stop_service
+   * - :ref:`stop_service`
      - 停止网络服务线程
-   * - io_service::is_running
+   * - :ref:`is_running`
      - 判断网络线程是否运行
-   * - io_service::dispatch
+   * - :ref:`dispatch`
      - 在调用者线程分派网络事件（包，连接响应，连接丢失）
    * - io_service::set_option
      - 设置选项
@@ -102,13 +102,56 @@ Example
 
   auto service = yasio_shared_service(io_hostent{host="ip138.com", port=80});
   service->start_service([](event_ptr&& ev) {
-    auto kind = event->kind();
+    auto kind = ev->kind();
     if (kind == YEK_CONNECT_RESPONSE)
     {
-      if (event->status() == 0)
-        printf("[%d] connect succeed.\n", event->cindex());
+      if (ev->status() == 0)
+        printf("[%d] connect succeed.\n", ev->cindex());
       else
-        printf("[%d] connect failed!\n", event->cindex());
+        printf("[%d] connect failed!\n", ev->cindex());
     }
   });
 
+.. _stop_service:
+
+io_service::stop_service
+------------------
+停止网络服务线程
+
+.. code-block:: cpp
+
+ void stop_service()
+
+.. _is_running:
+
+io_service::is_running
+------------------
+启动网络服务线程
+
+.. code-block:: cpp
+
+ bool is_running() const
+
+.. _dispatch:
+
+io_service::dispatch
+------------------
+在调用者线程分派网络事件
+
+.. code-block:: cpp
+
+ void dispatch(int max_count)
+
+Parameters
+^^^^^^^^^^^^^^^^^
+| *max_count*
+| 每次调用分派最大网络事件数, 通常128足够
+
+Example
+^^^^^^^^^^^^^^^^^^
+.. tabs::
+ .. code-tab:: cpp
+
+  // 通常在OpenGL或cocos和unity等游戏引擎渲染线程调用，
+  // 以便在特定网络消息回调里安全地更新界面逻辑。
+  yasio_shared_service()->dispatch(128); 
