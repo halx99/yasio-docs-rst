@@ -6,6 +6,7 @@ yasio CLASSES
     :glob:
     
     io_service
+    io_event
     io_channel
     io_transport
     ibstream
