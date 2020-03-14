@@ -14,15 +14,14 @@ yasio 文档
 
 * yasio官网：`https://yasio.org/ <https://yasio.org/>`_
 
-yasio 成功案例
+成功案例
 --------------------
 `红警OL手游项目 <https://hjol.qq.com/>`_: 用于客户端网络传输，并且随着该项目于2018年10月17日由腾讯游戏发行正式上线后稳定运行于上千万移动设备上。
 
-yasio 特点
+特点
 --------------------
 yasio 借鉴著名的boost网络库asio, 在保持轻量级的情况下，具备以下特点:
 
-* 支持header only集成方式，意味着无需编译，直接像stl一样包含头文件即可使用。
 * 支持IPv6_only网络。
 * 支持处理多个连接的所有网络事件。
 * 支持微妙级计时器。
@@ -35,6 +34,12 @@ yasio 借鉴著名的boost网络库asio, 在保持轻量级的情况下，具备
 * 支持组播。
 * 支持SSL客户端，基于OpenSSL。
 * 支持非阻塞域名解析，基于c-ares。
+* 支持header only集成方式，意味着无需编译，直接像c++ stl一样包含头文件即可使用，使用 `YASIO_HEADER_ONLY` 开启。
+* 跨平台性:
+
+  * 编译器: Visual Studio 2013或更高版本，GCC4.8或更高版本, xcode9或更高版本，其他支持C++11标准的编译器。
+  * 架构: x86, x64, ARM等。
+  * 操作系统: Windows, macOS, Linux, iOS, Android等。
 
 用法一览
 ----------------------
@@ -119,6 +124,15 @@ yasio 借鉴著名的boost网络库asio, 在保持轻量级的情况下，具备
   cd build
   cmake ..
   cmake --build . --config Debug
+
+API文档:
+^^^^^
+
+.. toctree::
+    :maxdepth: 2
+    :glob:
+    api/index
+
 
 .. |ImageRelLink| image:: https://img.shields.io/badge/release-v3.33.0-blue.svg
 .. _ImageRelLink: https://github.com/yasio/yasio/releases
