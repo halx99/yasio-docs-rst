@@ -34,7 +34,7 @@ yasio 借鉴著名的boost网络库asio, 在保持轻量级的情况下，具备
 * 支持组播。
 * 支持SSL客户端，基于OpenSSL。
 * 支持非阻塞域名解析，基于c-ares。
-* 支持header only集成方式，意味着无需编译，直接像c++ stl一样包含头文件即可使用，使用 `YASIO_HEADER_ONLY` 开启。
+* 支持header only集成方式，意味着无需编译，直接像c++ stl一样包含头文件即可使用，使用预编译宏 `YASIO_HEADER_ONLY` 开启。
 * 跨平台性:
 
   * 编译器: Visual Studio 2013或更高版本，GCC4.8或更高版本, xcode9或更高版本，其他支持C++11标准的编译器。
