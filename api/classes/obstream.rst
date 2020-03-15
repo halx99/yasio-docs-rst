@@ -30,7 +30,7 @@ obstream
    * - obstream::write_i24
      - 写入24位有符号整数
    * - obstream::write_u24
-     - 写入24位无符号证书
+     - 写入24位无符号整数
    * - obstream::write_i7
      - 写入7bit Encoded Int变长存储
    * - obstream::write_v

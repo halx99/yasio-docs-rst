@@ -35,7 +35,7 @@ ibstream继承了所有ibstream_view关于二进制读取的接口。
    * - ibstream_view::read_i24
      - 读取24位有符号整数
    * - ibstream_view::read_u24
-     - 读取24位无符号证书
+     - 读取24位无符号整数
    * - ibstream_view::read_i7
      - 读取7bit Encoded Int变长存储
    * - ibstream_view::read_v
