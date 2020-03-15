@@ -1,10 +1,9 @@
-=====================
 io_service
-=====================
+^^^^^^^^^^^^^^^^^^
 yasio的核心类，提供TCP,UDP,KCP异步网络服务，以独立线程处理所有网络事件。
 
 命名空间
----------------------
+---------
 ``namespace yasio::inet``
 
 成员
@@ -60,7 +59,7 @@ yasio的核心类，提供TCP,UDP,KCP异步网络服务，以独立线程处理�
 .. _io_service:
 
 io_service::io_service
-------------------
+-----------------------
 构造io_service对象，共有4个重载版本
 
 .. code-block:: cpp
@@ -71,7 +70,7 @@ io_service::io_service
  io_service::io_service(const io_hostent* channel_eps, int channel_count)
 
 Example
-^^^^^^^^^^^^^^^^^^
+>>>>>>>>>>>>>>>>>>
 .. tabs::
  .. code-tab:: cpp
 
@@ -88,7 +87,7 @@ Example
 .. _start_service:
 
 io_service::start_service
-------------------
+-------------------------
 启动网络服务线程
 
 .. code-block:: cpp
@@ -96,7 +95,7 @@ io_service::start_service
  void start_service(io_event_cb_t cb)
 
 Example
-^^^^^^^^^^^^^^^^^^
+>>>>>>>>>>>>>>>>>>
 .. tabs::
  .. code-tab:: cpp
 
@@ -115,7 +114,7 @@ Example
 .. _stop_service:
 
 io_service::stop_service
-------------------
+------------------------
 停止网络服务线程
 
 .. code-block:: cpp
@@ -125,7 +124,7 @@ io_service::stop_service
 .. _is_running:
 
 io_service::is_running
-------------------
+----------------------
 判断网络服务线程是否运行
 
 .. code-block:: cpp
@@ -135,7 +134,7 @@ io_service::is_running
 .. _dispatch:
 
 io_service::dispatch
-------------------
+--------------------
 在调用者线程分派网络事件
 
 .. code-block:: cpp
@@ -143,12 +142,12 @@ io_service::dispatch
  void dispatch(int max_count)
 
 Parameters
-^^^^^^^^^^^^^^^^^
+>>>>>>>>>>>>>>>>>>
 | *max_count*
 | 每次调用分派最大网络事件数, 通常128足够
 
 Example
-^^^^^^^^^^^^^^^^^^
+>>>>>>>>>>>>>>>>>>
 .. tabs::
  .. code-tab:: cpp
 
@@ -159,7 +158,7 @@ Example
 .. _set_option:
 
 io_service::set_option
-------------------
+-----------------------
 设置选项, 是可变参接口，根据opt不同，参数个数和类型不同
 
 .. code-block:: cpp
@@ -167,12 +166,12 @@ io_service::set_option
  void set_option(int opt, ...)
 
 Parameters
-^^^^^^^^^^^^^^^^^
+>>>>>>>>>>>>>>>>>>
 | *opt*
 | 选项类型，以 ``YOPT_`` 开头的枚举值, 详见: :ref:`options`
 
 Example
-^^^^^^^^^^^^^^^^^^
+>>>>>>>>>>>>>>>>>>
 .. tabs::
  .. code-tab:: cpp
   
@@ -206,7 +205,7 @@ io_service::open
  void open(size_t cindex, int kind)
 
 Parameters
-^^^^^^^^^^^^^^^^^
+>>>>>>>>>>>>>>>>>>
 | *cindex*
 | 信道索引
 | 
@@ -222,7 +221,7 @@ Parameters
  * ``YCK_SSL_CLIENT``
 
 Example
-^^^^^^^^^^^^^^^^^^
+>>>>>>>>>>>>>>>>>>
 .. tabs::
  .. code-tab:: cpp
 
@@ -241,7 +240,7 @@ io_service::reopen
  void reopen(transport_handle_t transport)
 
 Parameters
-^^^^^^^^^^^^^^^^^
+>>>>>>>>>>>>>>>>>>
 | *transport*
 | 传输会话
 
@@ -258,7 +257,7 @@ io_service::close
  void close(int cindex)
 
 Parameters
-^^^^^^^^^^^^^^^^^
+>>>>>>>>>>>>>>>>>>
 | *transport*
 | 传输会话句柄
 
@@ -275,7 +274,7 @@ io_service::write
                         std::function<void()> handler = nullptr)
 
 Parameters
-^^^^^^^^^^^^^^^^^
+>>>>>>>>>>>>>>>>>>
 | *thandle*
 | 传输会话句柄
 | 
@@ -289,7 +288,7 @@ Parameters
 .. _write_to:
 
 io_service::write_to
-------------------
+---------------------
 非阻塞发送UDP数据
 
 .. code-block:: cpp
@@ -298,7 +297,7 @@ io_service::write_to
                            const ip::endpoint& to)
 
 Parameters
-^^^^^^^^^^^^^^^^^
+>>>>>>>>>>>>>>>>>>
 | *thandle*
 | 传输会话句柄
 | 
@@ -309,14 +308,14 @@ Parameters
 | 发送远端地址
 
 Remark
-^^^^^^^^^^^^^^^^^
+>>>>>>>>>>>>>>>>>>
 只能用于未使用connect绑定过4元组的UDP socket.
 
 
 .. _schedule:
 
 io_service::schedule
-------------------
+---------------------
 注册定时器
 
 .. code-block:: cpp
@@ -324,7 +323,7 @@ io_service::schedule
  highp_timer_ptr schedule(const std::chrono::microseconds& duration, timer_cb_t cb)
 
 Parameters
-^^^^^^^^^^^^^^^^^
+>>>>>>>>>>>>>>>>>>
 | *duration*
 | 指定定时器超时时间
 | 
@@ -332,11 +331,11 @@ Parameters
 | 定时器超时回调函数
 
 Return Value
-^^^^^^^^^^^^^^^^^^
+>>>>>>>>>>>>>>>>>>
 定时器引用计数的智能指针， 用户可持有此指针对定时器进行操作
 
 Example
-^^^^^^^^^^^^^^^^^^
+>>>>>>>>>>>>>>>>>>
 .. tabs::
  .. code-tab:: cpp
 
@@ -356,7 +355,7 @@ Example
 .. _builtin_resolv:
 
 io_service::builtin_resolv
-------------------
+---------------------------
 内置域名解析， 会自动判断本地主机ipv6网络环境情况
 
 .. code-block:: cpp
@@ -365,7 +364,7 @@ io_service::builtin_resolv
                                  unsigned short port = 0)
 
 Parameters
-^^^^^^^^^^^^^^^^^
+>>>>>>>>>>>>>>>>>>
 | *endpoints*
 | 存储域名解析结果地址列表
 | 
@@ -376,13 +375,13 @@ Parameters
 | 端口
 
 Return Value
-^^^^^^^^^^^^^^^^^
+>>>>>>>>>>>>>>>>>>
 返回0成功， -1失败
 
 .. _cindex_to_handle:
 
 io_service::cindex_to_handle
-------------------
+----------------------------
 根据信道索引获取信道对象
 
 .. code-block:: cpp
@@ -390,7 +389,7 @@ io_service::cindex_to_handle
  io_channel* cindex_to_handle(size_t cindex) const
 
 Parameters
-^^^^^^^^^^^^^^^^^
+>>>>>>>>>>>>>>>>>>
 | *cindex*
 | 信道索引
 
@@ -398,7 +397,7 @@ Parameters
 .. _options:
 
 io_service options
-------------------
+-------------------
 
 .. list-table:: 
    :widths: auto

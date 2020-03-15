@@ -1,7 +1,9 @@
-======================
 io_transport
-======================
+^^^^^^^^^^^^^^^^^^
 传输会话，负责数据传输，通过io_event::transport接口中获取。
+
+.. note:: io_transport所有公共方法，如需调用，请在使用接口 ``io_service::is_open`` 返回true时调用。
+
 
 命名空间
 ---------------------
@@ -17,14 +19,59 @@ io_transport
 
    * - 函数名
      - 函数说明
-   * - io_transport::is_open
-     - 判断传输会话是否打开，只有打开状态才能正常收发数据
-   * - io_transport::id
-     - 获取传输会话ID，可用于日志跟踪
-   * - io_transport::local_endpoint
+   * - :ref:`id`
+     - 获取传输会话ID
+   * - :ref:`local_endpoint`
      - 获取本地地址
-   * - io_transport::peer_endpoint
+   * - :ref:`peer_endpoint`
      - 获取对端地址
-   * - io_transport::get_context
+   * - :ref:`get_context`
      - 获取管理会话的信道
+
+
+.. _id:
+
+io_transport::id
+-----------------------
+获取传输会话ID，可用于日志跟踪
+
+.. code-block:: cpp
+
+ unsigned int id() const
+
+Return Value
+>>>>>>>>>>>>>>>>>>>>
+返回ID是全局自增的，可保证在32位整数最大范围内保证唯一
+
+.. _local_endpoint:
+
+io_transport::local_endpoint
+-----------------------
+返回本地IP和端口
+
+.. code-block:: cpp
+
+ ip::endpoint local_endpoint() const
+
+
+.. _peer_endpoint:
+
+io_transport::peer_endpoint
+-----------------------
+返回通信对端IP和端口
+
+.. code-block:: cpp
+
+ ip::endpoint peer_endpoint() const
+
+
+.. _peer_endpoint:
+
+io_transport::get_context
+-----------------------
+获取管理会话的信道对象
+
+.. code-block:: cpp
+
+ io_channel* get_context() const
 
