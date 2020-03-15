@@ -308,7 +308,7 @@ Parameters
 
 Remark
 ^^^^^^^^^^^^^^^^^
-只能用于非未使用connect绑定过4元组的UDP socket.
+只能用于未使用connect绑定过4元组的UDP socket.
 
 
 .. _schedule:
