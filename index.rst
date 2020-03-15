@@ -36,13 +36,18 @@ yasio 借鉴著名的boost网络库asio, 在保持轻量级的情况下，具备
 * 支持header only集成方式，意味着无需编译，直接像c++ stl一样包含头文件即可使用，使用预编译宏 `YASIO_HEADER_ONLY` 开启。
 * 跨平台性:
 
-  * 编译器: Visual Studio 2013或更高版本，GCC4.8或更高版本, xcode9或更高版本，其他支持C++11标准的编译器。
+  * 编译器: 
+
+   * Visual Studio 2013+
+   * GCC4.7+
+   * xcode9+
+   * 其他支持C++11标准的编译器
   * 架构: x86, x64, ARM等。
   * 操作系统: Windows, macOS, Linux, iOS, Android等。
 
 用法一览
 ----------------------
-此简单例子向ip138.com发送http请求并打印返回结果
+此简单例子向 ``ip138.com`` 发送http请求并打印返回结果
 
 .. code-block:: cpp
 
@@ -113,7 +118,8 @@ yasio 借鉴著名的boost网络库asio, 在保持轻量级的情况下，具备
 
 构建 tests & examples
 ----------------------
-* 确保安装 ``git``, ``cmake``, ``VS2013或更高版本``, ``gcc-4.8以上版本``, ``xcode9或以上版本``
+* 确保已安装支持C++11标准的编译器，例如 ``msvc``, ``gcc``, ``clang`` 等
+* 确保已安装 ``git``, ``cmake``
 * 运行如下命令:
 .. code-block:: sh
 
