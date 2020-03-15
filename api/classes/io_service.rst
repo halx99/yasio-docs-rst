@@ -211,13 +211,14 @@ Parameters
 | 
 | *kind*
 | 信道类型，可取值: 
-    ``YCK_TCP_CLIENT``,
-    ``YCK_TCP_SERVER``,
-    ``YCK_UDP_CLIENT``,
-    ``YCK_UDP_SERVER``,
-    ``YCK_KCP_CLIENT``,
-    ``YCK_KCP_SERVER``,
-    ``YCK_SSL_CLIENT``
+
+ * ``YCK_TCP_CLIENT``
+ * ``YCK_TCP_SERVER``
+ * ``YCK_UDP_CLIENT``
+ * ``YCK_UDP_SERVER``
+ * ``YCK_KCP_CLIENT``
+ * ``YCK_KCP_SERVER``
+ * ``YCK_SSL_CLIENT``
 
 Example
 ^^^^^^^^^^^^^^^^^^
