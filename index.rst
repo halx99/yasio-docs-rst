@@ -4,11 +4,7 @@ yasio 中文文档
 
 *yasio 是一个轻量级跨平台的异步socket库，专注于客户端和基于各种游戏引擎的游戏客户端网络服务, 支持windows & linux & apple & android & win10-universal。*
 
-.. image:: img/release.png
-   :align: left
-   :scale: 80%
-   :target: https://github.com/yasio/yasio/releases
-| 
+|ImageRelLink|_
 
 * `yasio GitHub <https://github.com/yasio/yasio>`_
 * yasio 文档
@@ -150,3 +146,6 @@ API文档
 
     api/index
 
+
+.. |ImageRelLink| image:: https://img.shields.io/badge/release-v3.33.0-blue.svg
+.. _ImageRelLink: https://github.com/yasio/yasio/releases
