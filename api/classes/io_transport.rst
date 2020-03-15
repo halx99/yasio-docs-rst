@@ -25,8 +25,6 @@ io_transport
      - 获取对端地址
    * - io_transport::cindex
      - 获取传输会话的信道索引
-   * - io_transport::status
-     - 获取传输会话状态
    * - io_transport::id
      - 获取传输会话ID，可用于日志跟踪
    * - io_transport::get_service
