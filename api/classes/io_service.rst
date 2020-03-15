@@ -40,6 +40,8 @@ yasio的核心类，提供TCP,UDP,KCP异步网络服务，以独立线程处理�
      - 设置选项
    * - :ref:`open`
      - 打开信道
+   * - :ref:`is_open`
+     - 判断信道或传输会话是否已打开
    * - :ref:`reopen`
      - 重新打开Transport
    * - :ref:`close`
@@ -228,6 +230,16 @@ Example
   // 将信道0作为TCP客户端打开，发起TCP三次握手和服务器建立连接
   yasio_shared_service()->open(0, YCK_TCP_CLIENT); 
 
+.. _is_open:
+
+io_service::is_open
+----------------------
+判断信道或传输会话是否已打开, 共有2个重载版本，分别用于信道和传输会话
+
+.. code-block:: cpp
+
+ bool is_open(transport_handle_t) const
+ bool is_open(int cindex) const
 
 .. _reopen:
 
