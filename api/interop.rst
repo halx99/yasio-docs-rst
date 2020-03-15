@@ -5,9 +5,9 @@ https://github.com/yasio/yasio/blob/master/yasio/bindings/yasio_ni.cpp
 
 可参考xlua集成案例: https://github.com/c4games/xLua
 
-yasio NI(Native Interface) API
+yasio NI API
 -------------------------------
-.. code-block:: cpp
+.. code-block:: c
 
  YASIO_NI_API void yasio_start(int channel_count,
                                void (*event_cb)(uint32_t emask, int cidx, intptr_t sid,
