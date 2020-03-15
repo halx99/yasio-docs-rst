@@ -27,8 +27,6 @@ io_transport
      - 获取传输会话的信道索引
    * - io_transport::status
      - 获取传输会话状态
-   * - io_transport::fetch_packet
-     - 取走传输会话中的数据包
    * - io_transport::id
      - 获取传输会话ID，可用于日志跟踪
    * - io_transport::get_service
