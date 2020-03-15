@@ -39,9 +39,9 @@ ibstream继承了所有ibstream_view关于二进制读取的接口。
      - 读取24位无符号证书
    * - ibstream_view::read_i7
      - 读取7bit Encoded Int变长存储
-   * - ibstream_view::read_va
-     - 读取字节流数据，会先读取7bit编码的变长长度域
    * - ibstream_view::read_v
+     - 读取字节流数据，会先读取7bit编码的变长长度域
+   * - ibstream_view::read_v32
      - 读取字节流数据，使用32bit长度域
    * - ibstream_view::read_v16
      - 读取字节流数据，使用16bit长度域
@@ -54,7 +54,7 @@ ibstream继承了所有ibstream_view关于二进制读取的接口。
    * - ibstream_view::seek
      - 移动流指针，和系统文件io lseek用法相同
    * - ibstream_view::length
-     - 获取stream中长度
+     - 获取stream总字节数
    * - ibstream_view::data
      - 获取字节数据指针
    * - ibstream_view::sread_i
