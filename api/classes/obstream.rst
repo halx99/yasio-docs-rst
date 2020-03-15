@@ -34,9 +34,9 @@ obstream
      - 写入24位无符号证书
    * - obstream::write_i7
      - 写入7bit Encoded Int变长存储
-   * - obstream::write_va
-     - 写入字节流数据，会先写入7bit编码的变长长度域
    * - obstream::write_v
+     - 写入字节流数据，会先写入7bit编码的变长长度域
+   * - obstream::write_v32
      - 写入字节流数据，使用32bit长度域
    * - obstream::write_v16
      - 写入字节流数据，使用16bit长度域
