@@ -147,5 +147,5 @@ API文档
     api/index
 
 
-.. |ImageRelLink| image:: https://img.shields.io/badge/release-v3.33.0-blue.svg
+.. |ImageRelLink| image:: img/release.svg
 .. _ImageRelLink: https://github.com/yasio/yasio/releases
