@@ -1,5 +1,6 @@
+=================
 yasio CLASSES
-====================
+=================
 
 .. toctree::
     :maxdepth: 2
@@ -9,6 +10,6 @@ yasio CLASSES
     io_event
     io_channel
     io_transport
-    ibstream
     obstream
+    ibstream
     xxsocket
