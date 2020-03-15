@@ -19,15 +19,11 @@ io_transport
      - 函数说明
    * - io_transport::is_open
      - 判断传输会话是否打开，只有打开状态才能正常收发数据
+   * - io_transport::id
+     - 获取传输会话ID，可用于日志跟踪
    * - io_transport::local_endpoint
      - 获取本地地址
    * - io_transport::peer_endpoint
      - 获取对端地址
-   * - io_transport::cindex
-     - 获取传输会话的信道索引
-   * - io_transport::status
-     - 获取传输会话状态
-   * - io_transport::id
-     - 获取传输会话ID，可用于日志跟踪
-   * - io_transport::get_service
-     - 获取管理会话的io_service对象
+   * - io_transport::get_context
+     - 获取管理会话的信道
