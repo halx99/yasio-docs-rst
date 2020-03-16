@@ -28,10 +28,10 @@ yasio的核心类，提供TCP,UDP,KCP异步网络服务，以独立线程处理�
 
    * - 函数名
      - 函数说明
-   * - :ref:`start_service`
-     - 启动网络服务线程
-   * - :ref:`stop_service`
-     - 停止网络服务线程
+   * - :ref:`start`
+     - 启动网络服务
+   * - :ref:`stop`
+     - 停止网络服务
    * - :ref:`is_running`
      - 判断网络线程是否运行
    * - :ref:`dispatch`
@@ -86,15 +86,20 @@ Example
   io_service s4(hosts, YASIO_ARRAYSIZE(hosts)); // s4支持2个信道
 
 
-.. _start_service:
+.. _start:
 
-io_service::start_service
+io_service::start
 -------------------------
-启动网络服务线程
+启动网络服务
 
 .. code-block:: cpp
 
- void start_service(io_event_cb_t cb)
+ void start(io_event_cb_t cb)
+
+Parameters
+>>>>>>>>>>>>>>>>>>
+| *cb*
+| 接收网络事件的回调函数
 
 Example
 >>>>>>>>>>>>>>>>>>
@@ -102,7 +107,7 @@ Example
  .. code-tab:: cpp
 
   auto service = yasio_shared_service(io_hostent{host="ip138.com", port=80});
-  service->start_service([](event_ptr&& ev) {
+  service->start([](event_ptr&& ev) {
     auto kind = ev->kind();
     if (kind == YEK_CONNECT_RESPONSE)
     {
@@ -113,21 +118,21 @@ Example
     }
   });
 
-.. _stop_service:
+.. _stop:
 
-io_service::stop_service
+io_service::stop
 ------------------------
-停止网络服务线程
+停止网络服务
 
 .. code-block:: cpp
 
- void stop_service()
+ void stop()
 
 .. _is_running:
 
 io_service::is_running
 ----------------------
-判断网络服务线程是否运行
+判断网络服务是否运行
 
 .. code-block:: cpp
 
