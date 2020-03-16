@@ -468,7 +468,7 @@ io_service options
      - | 禁用信道组播，参数:
        | cindex:int
    * - YOPT_T_CONNECT_UDP
-     - | 使UDP transport和远程地址绑定，一旦绑定，无法解绑，参数:
+     - | 使用UDP transport和远程地址绑定，一旦绑定，无法解绑，参数:
        | transport:transport_handle_t
    * - YOPT_SOCKOPT
      - | 设置io对象socket选项，参数：
