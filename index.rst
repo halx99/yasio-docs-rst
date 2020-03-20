@@ -154,7 +154,7 @@ yasio 借鉴著名的boost网络库asio, 在保持轻量级的情况下，具备
 
 * examples:
 
-  * `ftp_server <https://github.com/yasio/yasio/tree/master/example/ftp_server>`_: 基于yasio实现的仅支持下载的ftp服务器，`点击 <ftp://ftp.x-studio.net>`_ 访问
+  * `ftp_server <https://github.com/yasio/yasio/tree/master/example/ftp_server>`_: 基于yasio实现的仅支持下载的ftp服务器，`点击 <ftp://ftp.yasio.org/>`_ 访问
   * `lua <https://github.com/yasio/yasio/tree/master/example/ftp_server>`_: lua样例程序，包含并发http请求，TCP拆包实例代码
 
 构建 tests & examples
