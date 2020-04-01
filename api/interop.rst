@@ -181,10 +181,6 @@ dotnet API
      //     initial_bytes_to_strip:int(0)
      YOPT_C_LFBFD_IBTS,
  
-     // Sets channel local port for client channel only
-     // params: index:int, port:int
-     YOPT_C_LOCAL_PORT,
- 
      // Sets channel remote host
      // params: index:int, ip:const char*
      YOPT_C_REMOTE_HOST,
@@ -196,7 +192,19 @@ dotnet API
      // Sets channel remote endpoint
      // params: index:int, ip:const char*, port:int
      YOPT_C_REMOTE_ENDPOINT,
- 
+
+     // Sets local host for client channel only
+     // params: index:int, ip:const char*
+     YOPT_C_LOCAL_HOST,
+
+     // Sets local port for client channel only
+     // params: index:int, port:int
+     YOPT_C_LOCAL_PORT,
+
+     // Sets local endpoint for client channel only
+     // params: index:int, ip:const char*, port:int
+     YOPT_C_LOCAL_ENDPOINT,
+
      // Sets channl flags
      // params: index:int, flagsToAdd:int, flagsToRemove:int
      YOPT_C_MOD_FLAGS,
@@ -208,6 +216,10 @@ dotnet API
      // Disable channel multicast mode
      // params: index:int
      YOPT_C_DISABLE_MCAST,
+
+     // Bind the unconnected UDP transport, once bind, can't be unbind.
+     // params: transport:transport_handle_t
+     YOPT_T_BIND_UDP,
      
      // Sets io_base sockopt
      // params: io_base*,level:int,optname:int,optval:int,optlen:int
