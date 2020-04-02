@@ -11,8 +11,8 @@ yasio 预处理器定义
      - 说明
    * - YASIO_HEADER_ONLY
      - 是否以仅仅头文件的方式使用yasio核心组件，默认关闭
-   * - YASIO_VERBOSE_LOG，默认关闭
-     - 是否打印详细日志
+   * - YASIO_VERBOSE_LOG
+     - 是否打印详细日志，默认关闭
    * - YASIO_DISABLE_SPSC_QUEUE
      - 是否禁用SPSC队列，在非单线程发送数据情况先需要禁用，默认启用
    * - YASIO_DISABLE_OBJECT_POOL 
