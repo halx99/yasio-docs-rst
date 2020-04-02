@@ -1,7 +1,7 @@
-yasio 预处理器定义
-^^^^^^^^^^^^^^^^^^
+yasio 宏定义
+^^^^^^^^^^^^^^^^^^^
 
-以下宏定义可以控制yasio的行为, 可以再 `yasio/detail/config.hpp <https://github.com/yasio/yasio/blob/master/yasio/detail/config.hpp>`_ 更改或者定义为编译器宏
+以下宏定义可以控制yasio的行为, 可以在 `yasio/detail/config.hpp <https://github.com/yasio/yasio/blob/master/yasio/detail/config.hpp>`_ 更改或者在编译器预处理器定义
 
 .. list-table:: 
    :widths: auto
