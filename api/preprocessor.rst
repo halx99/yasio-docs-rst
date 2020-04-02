@@ -10,7 +10,7 @@ yasio 宏定义
    * - 宏定义
      - 说明
    * - YASIO_HEADER_ONLY
-     - 是否以仅仅头文件的方式使用yasio核心组件，默认关闭
+     - 是否以仅头文件的方式使用yasio核心组件，默认关闭
    * - YASIO_VERBOSE_LOG
      - 是否打印详细日志，默认关闭
    * - YASIO_DISABLE_SPSC_QUEUE
