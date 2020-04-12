@@ -54,7 +54,7 @@ yasio的核心类，提供TCP,UDP,KCP异步网络服务，以独立线程处理�
      - 启动定时器
    * - :ref:`builtin_resolv`
      - 内置域名解析
-   * - :ref:`cindex_to_handle`
+   * - :ref:`channel_at`
      - 根据信道索引获取信道对象  
 
 
@@ -288,7 +288,7 @@ io_service::write
 .. code-block:: cpp
 
  int write(transport_handle_t thandle, std::vector<char> buffer,
-                        std::function<void()> handler = nullptr)
+                        std::function<void()> completion_handler = nullptr)
 
 Parameters
 >>>>>>>>>>>>>>>>>>
@@ -298,8 +298,8 @@ Parameters
 | *buffer*
 | 要发送的数据
 | 
-| *handler*
-| 发送完成回调
+| *completion_handler*
+| 发送完成回调，对于未绑定类udp传输会话，会使用默认远端地址
 
 
 .. _write_to:
@@ -311,7 +311,7 @@ io_service::write_to
 .. code-block:: cpp
 
  int write_to(transport_handle_t thandle, std::vector<char> buffer,
-                           const ip::endpoint& to)
+                           const ip::endpoint& to, std::function<void()> completion_handler = nullptr)
 
 Parameters
 >>>>>>>>>>>>>>>>>>
@@ -323,6 +323,9 @@ Parameters
 | 
 | *to*
 | 发送远端地址
+|
+| *completion_handler*
+| 发送完成回调, kcp暂不支持此回调
 
 Remark
 >>>>>>>>>>>>>>>>>>
@@ -395,15 +398,15 @@ Return Value
 >>>>>>>>>>>>>>>>>>
 返回0成功， -1失败
 
-.. _cindex_to_handle:
+.. _channel_at:
 
-io_service::cindex_to_handle
+io_service::channel_at
 ----------------------------
 根据信道索引获取信道对象
 
 .. code-block:: cpp
 
- io_channel* cindex_to_handle(size_t cindex) const
+ io_channel* channel_at(size_t cindex) const
 
 Parameters
 >>>>>>>>>>>>>>>>>>
