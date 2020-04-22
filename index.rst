@@ -62,7 +62,7 @@ yasio 借鉴著名的boost网络库asio, 在保持轻量级的情况下，具备
   {
     io_service service({"www.ip138.com", 80});
     service.set_option(YOPT_S_DEFERRED_EVENT, 0); // 直接在网络线程分派网络事件
-    service.start_service([&](event_ptr&& ev) {
+    service.start([&](event_ptr&& ev) {
       switch (ev->kind())
       {
         case YEK_PACKET: {
@@ -109,7 +109,7 @@ yasio 借鉴著名的boost网络库asio, 在保持轻量级的情况下，具备
   local service = yasio.io_service.new({host=ip138, port=80})
   local respdata = ""
   -- 传入网络事件处理函数启动网络服务线程，网络事件有: 消息包，连接响应，连接丢失
-  service.start_service(function(ev)
+  service.start(function(ev)
           local k = ev.kind()
           if (k == yasio.YEK_PACKET) then
               respdata = respdata .. ev:packet():to_string()
