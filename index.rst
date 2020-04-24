@@ -168,6 +168,7 @@ yasio 借鉴著名的boost网络库asio, 在保持轻量级的情况下，具备
   cd yasio
   git submodule update --init --recursive 
   cd build
+  # 注意，这里xcode需要运行: cmake .. -GXcode
   cmake ..
   cmake --build . --config Debug
 
