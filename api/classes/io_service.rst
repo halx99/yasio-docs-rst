@@ -288,7 +288,7 @@ io_service::write
 .. code-block:: cpp
 
  int write(transport_handle_t thandle, std::vector<char> buffer,
-                        std::function<void()> completion_handler = nullptr)
+                        io_completion_cb_t completion_handler = nullptr)
 
 Parameters
 >>>>>>>>>>>>>>>>>>
@@ -311,7 +311,7 @@ io_service::write_to
 .. code-block:: cpp
 
  int write_to(transport_handle_t thandle, std::vector<char> buffer,
-                           const ip::endpoint& to, std::function<void()> completion_handler = nullptr)
+                           const ip::endpoint& to, io_completion_cb_t completion_handler = nullptr)
 
 Parameters
 >>>>>>>>>>>>>>>>>>
