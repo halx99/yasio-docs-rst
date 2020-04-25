@@ -287,8 +287,8 @@ io_service::write
 
 .. code-block:: cpp
 
- int write(transport_handle_t thandle, std::vector<char> buffer,
-                        :ref:`io_completion_cb_t` completion_handler = nullptr)
+  int write(transport_handle_t thandle, std::vector<char> buffer, 
+                io_completion_cb_t completion_handler = nullptr)
 
 Parameters
 >>>>>>>>>>>>>>>>>>
@@ -299,7 +299,7 @@ Parameters
 | 要发送的数据
 | 
 | *completion_handler*
-| 发送完成回调，在网络线程调度
+| 发送完成回调，在网络线程调度, 原型: :ref:`io_completion_cb_t`
 
 
 .. _write_to:
@@ -309,9 +309,9 @@ io_service::write_to
 非阻塞发送UDP数据
 
 .. code-block:: cpp
-
+ 
  int write_to(transport_handle_t thandle, std::vector<char> buffer,
-                           const ip::endpoint& to, :ref:`io_completion_cb_t` completion_handler = nullptr)
+                           const ip::endpoint& to, io_completion_cb_t completion_handler = nullptr)
 
 Parameters
 >>>>>>>>>>>>>>>>>>
@@ -325,7 +325,7 @@ Parameters
 | 发送远端地址
 |
 | *completion_handler*
-| 发送完成回调，在网络线程调度，kcp暂不支持此回调
+| 发送完成回调，在网络线程调度，kcp暂不支持此回调, 原型: :ref:`io_completion_cb_t`
 
 Remark
 >>>>>>>>>>>>>>>>>>
@@ -416,7 +416,7 @@ Parameters
 
 .. _io_completion_cb_t:
 
-发送完成回调
+io_completion_cb_t
 -------------------
 
 Prototype
@@ -441,7 +441,7 @@ Parameters
 
 .. _options:
 
-选项列表
+Options
 -------------------
 
 .. list-table:: 
