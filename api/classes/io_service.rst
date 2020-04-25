@@ -415,7 +415,16 @@ Parameters
 
 
 .. _io_completion_cb_t:
-typedef std::function<void(int ec, size_t bytes_transferred)> io_completion_cb_t;
+
+发送完成回调
+-------------------
+
+Prototype
+>>>>>>>>>>>>>>>>>>
+
+.. code-block:: cpp
+
+  typedef std::function<void(int ec, size_t bytes_transferred)> io_completion_cb_t;
 
 Parameters
 >>>>>>>>>>>>>>>>>>
@@ -432,7 +441,7 @@ Parameters
 
 .. _options:
 
-io_service options
+选项列表
 -------------------
 
 .. list-table:: 
