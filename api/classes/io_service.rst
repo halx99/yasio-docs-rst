@@ -288,7 +288,7 @@ io_service::write
 .. code-block:: cpp
 
  int write(transport_handle_t thandle, std::vector<char> buffer,
-                        io_completion_cb_t completion_handler = nullptr)
+                        :ref:`io_completion_cb_t` completion_handler = nullptr)
 
 Parameters
 >>>>>>>>>>>>>>>>>>
@@ -311,7 +311,7 @@ io_service::write_to
 .. code-block:: cpp
 
  int write_to(transport_handle_t thandle, std::vector<char> buffer,
-                           const ip::endpoint& to, io_completion_cb_t completion_handler = nullptr)
+                           const ip::endpoint& to, :ref:`io_completion_cb_t` completion_handler = nullptr)
 
 Parameters
 >>>>>>>>>>>>>>>>>>
@@ -319,7 +319,7 @@ Parameters
 | 传输会话句柄
 | 
 | *buffer*
-| 要发送的数据
+| 要发送的数据, 空buffer，直接忽略，也不会触发completion_handler
 | 
 | *to*
 | 发送远端地址
@@ -413,6 +413,22 @@ Parameters
 | *cindex*
 | 信道索引
 
+
+.. _io_completion_cb_t:
+typedef std::function<void(int ec, size_t bytes_transferred)> io_completion_cb_t;
+
+Parameters
+>>>>>>>>>>>>>>>>>>
+| *ec*
+| 错误码
+|   UDP: 如果发送出错，可通过此错误码决定是否关闭transport
+|   TCP: 始终为0，用户无需关心
+|
+| *bytes_transferred*
+| 传输完成字节数
+|   UDP: 如果出错则可能为0或者小于请求发送字节数
+|   TCP: 始终等于请求发送的字节数，因此用户可忽略
+| 
 
 .. _options:
 
