@@ -55,11 +55,11 @@ io_transport::ud_
     int ival;
   } ud_;
 
-.. _id:
-
 Remark
 >>>>>>>>>>>>>
 注意: 生命周期需要使用者自己维护，收到connect success存储userdata, 收到connect lost事件，清理userdata
+
+.. _id:
 
 io_transport::id
 -----------------------
@@ -95,7 +95,7 @@ io_transport::peer_endpoint
  ip::endpoint peer_endpoint() const
 
 
-.. _peer_endpoint:
+.. _get_context:
 
 io_transport::get_context
 -----------------------
