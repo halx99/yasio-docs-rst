@@ -157,7 +157,7 @@ yasio 借鉴著名的boost网络库asio, 在保持轻量级的情况下，具备
   * `ftp_server <https://github.com/yasio/ftp_server>`_: 基于yasio实现的仅支持下载的ftp服务器，`点击 <ftp://ftp.yasio.org/>`_ 访问
   * `lua <https://github.com/yasio/yasio/tree/master/examples/lua>`_: lua样例程序，包含并发http请求，TCP拆包实例代码
   * `empty3d <https://github.com/yasio/empty3d>`_: Unity3D xLua集成Demo
-
+  * `dummy3d <https://github.com/yasio/dummy3d>`_: 虚幻4集成Demo
 构建 tests & examples
 ----------------------
 * 确保已安装支持C++11标准的编译器，例如 ``msvc``, ``gcc``, ``clang`` 等
@@ -177,7 +177,7 @@ yasio 异步网络服务的三要素
 ------------------------
 * io_channel: 信道，负责连接管理，建立，关闭，重连，启动TCP/UDP服务监听
 * io_transport: 传输会话，类似文件句柄，用于实际数据收发，由框架内部产生并通过网络事件返回
-* io_service： 核心网络服务，在内部采用 ``反应堆模式(Reactor)`` 处理所有网络事件，对用户提供 ``前置器模式(Proactor)`` 使用方式，即用户只管投递异步消息发送和处理框架返回的消息事件即可，无需处理具体发送和接收细节
+* io_service： 核心网络服务，在内部采用 ``反应堆模式(Reactor)`` 处理所有网络事件，对用户提供 ``前置器模式(Proactor)`` 使用方式，即用户只管投递异步消息发送和处理框架返回的消息事件即可，无需关心具体发送、接收和拆包细节
 
 API文档
 --------------------
