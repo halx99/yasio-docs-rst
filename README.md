@@ -7,7 +7,7 @@ yasio中文文档，站点地址: https://docs.yasio.org/
 1. Install Python-3.7.x+
 2. Install Python Extensions: sphinx, sphinx_rtd_theme, sphinx_tabs: 
 ```sh
-pip install sphinx sphinx_rtd_theme sphinx_tabs
+pip install sphinx sphinx_rtd_theme sphinx_tabs sphinxcontrib-svg2pdfconverter
 ```
 for vscode rst preview. For more detail, see: https://docs.restructuredtext.net/articles/prerequisites.html
 3. Install Microsoft VS Code
