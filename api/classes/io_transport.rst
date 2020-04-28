@@ -11,6 +11,18 @@ io_transport
 
 成员
 ---------------------
+公共成员:
+
+.. list-table:: 
+   :widths: auto
+   :header-rows: 1
+
+   * - 变量名
+     - 说明
+   * - :ref:`ud_`
+     - 用户数据
+
+
 公共方法:
 
 .. list-table:: 
@@ -29,7 +41,25 @@ io_transport
      - 获取管理会话的信道
 
 
+.. _ud_:
+
+io_transport::ud_
+-----------------------
+可通过此变量设置用户数据
+
+.. code-block:: cpp
+
+  union
+  {
+    void* ptr;
+    int ival;
+  } ud_;
+
 .. _id:
+
+Remark
+>>>>>>>>>>>>>
+注意: 生命周期需要使用者自己维护，收到connect success存储userdata, 收到connect lost事件，清理userdata
 
 io_transport::id
 -----------------------

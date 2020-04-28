@@ -55,7 +55,11 @@ yasio的核心类，提供TCP,UDP,KCP异步网络服务，以独立线程处理�
    * - :ref:`builtin_resolv`
      - 内置域名解析
    * - :ref:`channel_at`
-     - 根据信道索引获取信道对象  
+     - 根据信道索引获取信道对象
+   * - :ref:`init_globals`
+     - 初始化io_service全局状态  
+   * - :ref:`cleanup_globals`
+     - 清理io_service全局状态  
 
 
 .. _io_service:
@@ -413,6 +417,40 @@ Parameters
 | *cindex*
 | 信道索引
 
+.. _init_globals:
+
+io_service::init_globals
+----------------------------
+初始化io_service全局状态, 静态成员函数
+
+.. code-block:: cpp
+
+ static void init_globals(print_fn_t print_fn)
+
+Parameters
+>>>>>>>>>>>>>>>>>>
+| *print_fn*
+| 自定义打印函数，
+
+Remark
+>>>>>>>>>>>>>>>>>>
+* 如果不希望重定向日志，则无需调用此函数, 否则可调用，例如重定向yasio日志到UE4或Unity3D编辑器输出窗口
+* 此函数需要在任何io_service::start调用之前，通常是在应用程序初始化的时候调用一次
+* 不论调用多少次，自定义打印函数只会生效一次
+
+.. _cleanup_globals:
+
+io_service::cleanup_globals
+----------------------------
+清理io_service全局状态, 静态成员函数
+
+.. code-block:: cpp
+
+ static void cleanup_globals()
+
+Remark
+>>>>>>>>>>>>>>>>>>
+* 只有在调用过init_globals设置了自定义打印函数，且自定义打印函数所在模块卸载前需要调用。
 
 .. _io_completion_cb_t:
 
@@ -455,7 +493,7 @@ Options
    * - YOPT_S_RESOLV_FN
      - | 设置自定义域名解析回调，参数类型resolv_fn_t*
    * - YOPT_S_PRINT_FN
-     - 设置打印函数, 参数类型print_fn_t*
+     - [废弃]请使用io_service::init_globals替代，设置打印函数, 参数类型print_fn_t*
    * - YOPT_S_EVENT_CB
      - 设置网络事件回调, 参数类型io_event_cb_t*
    * - YOPT_S_TCP_KEEPALIVE
