@@ -9,9 +9,9 @@ yasio中文文档，站点地址: https://docs.yasio.org/
 ```sh
 pip install sphinx sphinx_rtd_theme sphinx_tabs sphinxcontrib-svg2pdfconverter
 ```
-for vscode rst preview. For more detail, see: https://docs.restructuredtext.net/articles/prerequisites.html
-3. Install Microsoft VS Code
-4. Install Microsoft VS Code extension: reStructedText, just search rst
+for vscode rst preview. For more detail, see: https://docs.restructuredtext.net/articles/prerequisites.html  
+3. Install Microsoft VS Code  
+4. Install Microsoft VS Code extension: reStructedText, just search rst  
 
 ### Powerd by reST, references:  
   
