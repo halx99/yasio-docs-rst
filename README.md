@@ -4,14 +4,14 @@ yasio中文文档，站点地址: https://docs.yasio.org/
 [![Documentation Status](https://readthedocs.org/projects/yasio-docs/badge/?version=latest)](https://readthedocs.org/projects/yasio-docs/builds/)
 
 ### Install sphinx reST docs preview env
-1. Install Python-3.7.x+
-2. Install Python Extensions: sphinx, sphinx_rtd_theme, sphinx_tabs: 
+ 1. Install Python-3.7.x+
+ 2. Install Python Extensions for vscode rst preview: sphinx, sphinx_rtd_theme, sphinx_tabs: 
 ```sh
 pip install sphinx sphinx_rtd_theme sphinx_tabs sphinxcontrib-svg2pdfconverter
 ```
-for vscode rst preview. For more detail, see: https://docs.restructuredtext.net/articles/prerequisites.html  
-3. Install Microsoft VS Code  
-4. Install Microsoft VS Code extension: reStructedText, just search rst  
+For more detail, see: https://docs.restructuredtext.net/articles/prerequisites.html  
+ 3. Install Microsoft VS Code  
+ 4. Install Microsoft VS Code extension: reStructedText, just search rst  
 
 ### Powerd by reST, references:  
   
