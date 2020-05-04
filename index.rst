@@ -109,7 +109,7 @@ yasio 借鉴著名的boost网络库asio, 在保持轻量级的情况下，具备
   local service = yasio.io_service.new({host=ip138, port=80})
   local respdata = ""
   -- 传入网络事件处理函数启动网络服务线程，网络事件有: 消息包，连接响应，连接丢失
-  service.start(function(ev)
+  service:start(function(ev)
           local k = ev.kind()
           if (k == yasio.YEK_PACKET) then
               respdata = respdata .. ev:packet():to_string()
@@ -125,18 +125,18 @@ yasio 借鉴著名的boost网络库asio, 在保持轻量级的情况下，具备
                   obs.write_bytes("Accept: */*;q=0.8\r\n")
                   obs.write_bytes("Connection: Close\r\n\r\n")
   
-                  service.write(transport, obs)
+                  service:write(transport, obs)
               end
           elseif k == yasio.YEK_CONNECTION_LOST then
               print("request finish, respdata: " ..  respdata)
           end
       end)
   -- 将信道0作为TCP客户端打开，并向服务器发起异步连接，进行TCP三次握手
-  service.open(0, yasio.YCK_TCP_CLIENT)
+  service:open(0, yasio.YCK_TCP_CLIENT)
   
   -- 由于lua_State和渲染对象，不支持在其他线程操作，因此分派网络事件封装为全局Lua函数，并且以下函数应该在主线程或者游戏引擎渲染线程调用
   function gDispatchNetworkEvent(...)
-      service.dispatch(128) -- 每帧最多处理128个网络事件
+      service:dispatch(128) -- 每帧最多处理128个网络事件
   end
   
   _G.yservice = service -- Store service to global table as a singleton instance
