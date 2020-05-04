@@ -117,13 +117,13 @@ yasio 借鉴著名的boost网络库asio, 在保持轻量级的情况下，具备
               if ev:status() == 0 then -- status为0表示连接建立成功
                   local transport = ev:transport()
                   local obs = yasio.obstream.new()
-                  obs.write_bytes("GET / HTTP/1.1\r\n")
+                  obs:write_bytes("GET / HTTP/1.1\r\n")
   
-                  obs.write_bytes("Host: " .. ip138 .. "\r\n")
+                  obs:write_bytes("Host: " .. ip138 .. "\r\n")
   
-                  obs.write_bytes("User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36\r\n")
-                  obs.write_bytes("Accept: */*;q=0.8\r\n")
-                  obs.write_bytes("Connection: Close\r\n\r\n")
+                  obs:write_bytes("User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36\r\n")
+                  obs:write_bytes("Accept: */*;q=0.8\r\n")
+                  obs:write_bytes("Connection: Close\r\n\r\n")
   
                   service:write(transport, obs)
               end
