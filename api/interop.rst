@@ -8,7 +8,7 @@ https://github.com/yasio/yasio/blob/master/yasio/bindings/yasio_ni.cpp
 yasio NI API
 -------------------------------
 .. code-block:: c
-
+ YASIO_NI_API yasio_init_globals(void (*print_fn)(const char*));
  YASIO_NI_API void yasio_start(int channel_count,
                                void (*event_cb)(uint32_t emask, int cidx, intptr_t sid,
                                intptr_t bytes, int len));
@@ -39,6 +39,9 @@ dotnet API
  public delegate void YNIEventDelegate(uint emask, int cidx, IntPtr sid, IntPtr bytes, int len);
  public delegate int YNIResolvDelegate(string host, IntPtr sbuf);
  public delegate void YNIPrintDelegate(string msg);
+
+ [DllImport(LIBNAME, CallingConvention = CallingConvention.Cdecl)]
+ public static extern void yasio_init_globals(YNIPrintDelegate fnPrint);
  
  /// <summary>
  /// Start a low level socket io service
