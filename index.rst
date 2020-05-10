@@ -37,19 +37,12 @@ yasio 借鉴著名的boost网络库asio, 在保持轻量级的情况下，具备
 * 支持header only集成方式，意味着无需编译，直接像c++ stl一样包含头文件即可使用，使用预编译宏 `YASIO_HEADER_ONLY` 开启。
 * 跨平台性:
 
-  * C++11编译器: 
+  * 编译器: 
 
    * Visual Studio 2013+
    * GCC4.7+
    * xcode9+
-   * 其他支持C++11标准的编译器
-
-  * C++17编译器: 
-
-   * Visual Studio 2017+
-   * GCC4.9+/ndk-r16+
-   * xcode11+
-   * 其他支持C++11标准的编译器
+   * 其他支持C++11,14,17标准的编译器
 
   * 架构: x86, x64, ARM等。
   * 操作系统: Windows, macOS, Linux, iOS, Android等。
