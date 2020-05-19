@@ -42,8 +42,6 @@ yasio的核心类，提供TCP,UDP,KCP异步网络服务，以独立线程处理�
      - 打开信道
    * - :ref:`is_open`
      - 判断信道或传输会话是否已打开
-   * - :ref:`reopen`
-     - 重新打开Transport
    * - :ref:`close`
      - 关闭信道或Transport
    * - :ref:`write`
@@ -247,22 +245,6 @@ io_service::is_open
 
  bool is_open(transport_handle_t) const
  bool is_open(int cindex) const
-
-.. _reopen:
-
-io_service::reopen
-------------------
-重新打开传输会话
-
-.. code-block:: cpp
-
- void reopen(transport_handle_t transport)
-
-Parameters
->>>>>>>>>>>>>>>>>>
-| *transport*
-| 传输会话
-
 
 .. _close:
 
