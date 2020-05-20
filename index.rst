@@ -5,7 +5,7 @@ yasio 中文文档
 
 |ImageRelLink|_
 
-.. important:: 由于作者还没找到比较完美的kcp实现方案，目前对kcp的封装尚处于experimental实验阶段,详见 `speedtest <https://github.com/yasio/yasio/tree/master/tests/speed>`_。
+.. important:: 由于作者还没找到比较完美的kcp实现方案，目前对kcp的封装尚处于experimental实验阶段,详见： `speedtest <https://github.com/yasio/yasio/tree/master/tests/speed>`_。
 
 * `yasio GitHub <https://github.com/yasio/yasio>`_
 * yasio 文档
