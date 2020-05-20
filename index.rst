@@ -5,6 +5,8 @@ yasio 中文文档
 
 |ImageRelLink|_
 
+.. important:: 由于作者还没找到比较完美的kcp实现方案，目前对kcp的封装尚处于experimental实验阶段,详见 `speedtest <https://github.com/yasio/yasio/tree/master/tests/speed>`_。
+
 * `yasio GitHub <https://github.com/yasio/yasio>`_
 * yasio 文档
 
@@ -150,7 +152,7 @@ yasio 借鉴著名的boost网络库asio, 在保持轻量级的情况下，具备
   * `echo_client <https://github.com/yasio/yasio/tree/master/tests/echo_client>`_: TCP, UDP回射客户端
   * `ssltest <https://github.com/yasio/yasio/tree/master/tests/ssl>`_: SSL测试客户端，请求github.com主页并打印返回数据
   * `tcptest <https://github.com/yasio/yasio/tree/master/tests/tcp>`_: TCP测试程序
-  * `kcptest <https://github.com/yasio/yasio/tree/master/tests/kcp>`_: KCP测试程序
+  * `speedtest <https://github.com/yasio/yasio/tree/master/tests/speed>`_: TCP,UDP,KCP本机传输速率测试程序
   * `mcast <https://github.com/yasio/yasio/tree/master/tests/mcast>`_: 组播测试程序
 
 * examples:
