@@ -444,7 +444,7 @@ Parameters
 
 .. _options:
 
-Options
+io_service::options
 -------------------
 
 .. list-table:: 
@@ -503,9 +503,12 @@ Options
    * - YOPT_C_DISABLE_MCAST
      - | 禁用信道组播，参数:
        | cindex:int
-   * - YOPT_T_CONNECT_UDP
-     - | 使用UDP transport和远程地址绑定，一旦绑定，无法解绑，参数:
+   * - YOPT_T_CONNECT
+     - | 使UDP Transport和远端地址建立4元组绑定关系，可以多次调用，参数:
        | transport:transport_handle_t
-   * - YOPT_SOCKOPT
+   * - YOPT_T_DISCONNECT
+     - | 解除UDP Transport和远端地址的4元组绑定关系，参数:
+       | transport:transport_handle_t
+   * - YOPT_B_SOCKOPT
      - | 设置io对象socket选项，参数：
        | obj:io_base*,level:int,optname:int,optval:int,optlen:int
