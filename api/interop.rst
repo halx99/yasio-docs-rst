@@ -220,12 +220,18 @@ dotnet API
      // params: index:int
      YOPT_C_DISABLE_MCAST,
 
-     // Bind the unconnected UDP transport, once bind, can't be unbind.
+     // Change 4-tuple association for io_transport_udp
      // params: transport:transport_handle_t
-     YOPT_T_BIND_UDP,
-     
+     // remark: only works for udp client transport
+     YOPT_T_CONNECT,
+
+     // Dissolve 4-tuple association for io_transport_udp
+     // params: transport:transport_handle_t
+     // remark: only works for udp client transport
+     YOPT_T_DISCONNECT,
+
      // Sets io_base sockopt
      // params: io_base*,level:int,optname:int,optval:int,optlen:int
-     YOPT_SOCKOPT = 201,
+     YOPT_B_SOCKOPT = 201,
      #endregion
  };
