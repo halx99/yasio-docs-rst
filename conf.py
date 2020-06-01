@@ -11,7 +11,7 @@ needs_sphinx = '1.3'
 
 # Sphinx extension module names and templates location
 sys.path.append(os.path.abspath('extensions'))
-extensions = ['sphinx_tabs.tabs', 'sphinx.ext.imgmath', 'sphinxcontrib.rsvgconverter']
+extensions = ['sphinx_tabs.tabs', 'sphinx.ext.imgmath', 'sphinxcontrib.rsvgconverter', 'sphinx_copybutton']
 # templates_path = ['_templates']
 
 # You can specify multiple suffix as a list of string: ['.rst', '.md']

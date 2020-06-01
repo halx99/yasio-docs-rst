@@ -1,3 +1,4 @@
 django>=1.11.22
 pillow>=6.2.0
 sphinxcontrib-svg2pdfconverter>=1.0.1
+sphinx-copybutton>=0.2.11
