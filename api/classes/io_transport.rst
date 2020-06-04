@@ -11,17 +11,6 @@ io_transport
 
 成员
 ---------------------
-公共成员:
-
-.. list-table:: 
-   :widths: auto
-   :header-rows: 1
-
-   * - 变量名
-     - 说明
-   * - :ref:`ud_`
-     - 用户数据
-
 
 公共方法:
 
@@ -31,8 +20,6 @@ io_transport
 
    * - 函数名
      - 函数说明
-   * - :ref:`id`
-     - 获取传输会话ID
    * - :ref:`local_endpoint`
      - 获取本地地址
    * - :ref:`peer_endpoint`
@@ -40,38 +27,6 @@ io_transport
    * - :ref:`get_context`
      - 获取管理会话的信道
 
-
-.. _ud_:
-
-io_transport::ud_
------------------------
-可通过此变量设置用户数据
-
-.. code-block:: cpp
-
-  union
-  {
-    void* ptr;
-    int ival;
-  } ud_;
-
-Remark
->>>>>>>>>>>>>
-注意: 生命周期需要使用者自己维护，收到connect success存储userdata, 收到connect lost事件，清理userdata
-
-.. _id:
-
-io_transport::id
------------------------
-获取传输会话ID，可用于日志跟踪
-
-.. code-block:: cpp
-
- unsigned int id() const
-
-Return Value
->>>>>>>>>>>>>>>>>>>>
-返回ID是全局自增的，可保证在32位整数最大范围内保证唯一
 
 .. _local_endpoint:
 

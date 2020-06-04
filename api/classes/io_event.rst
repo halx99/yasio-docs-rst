@@ -17,6 +17,8 @@ io_event
 
    * - 函数名
      - 函数说明
+   * - :ref:`timestamp`
+     - 获取事件产生的微秒级时间戳
    * - :ref:`kind`
      - 获取事件类型
    * - :ref:`status`
@@ -25,8 +27,10 @@ io_event
      - 获取数据包
    * - :ref:`transport`
      - 获取事件当前的传输会话句柄
-   * - :ref:`timestamp`
-     - 获取事件产生的微秒级时间戳
+  * - :ref:`transport_id`
+     - 获取trasnport唯一ID
+  * - :ref:`transport_udata`
+     - 获取或设置transport的用户数据
 
 .. _kind:
 
@@ -90,3 +94,33 @@ io_event::timestamp
 .. code-block:: cpp
 
  long long timestamp() const
+
+.. _transport_id:
+
+io_event::transport_id()
+-----------------------
+获取传输会话ID，可用于日志跟踪
+
+.. code-block:: cpp
+
+ unsigned int id() const
+
+Return Value
+>>>>>>>>>>>>>>>>>>>>
+返回ID是全局自增的，可保证在32位整数最大范围内保证唯一, (uint32_t)-1 视为无效ID
+
+.. _transport_udata:
+
+io_event::transport_udata
+--------------------------
+安全地获取和设置用户变量，所有类型网络事件，调用次函数都是安全的
+
+.. code-block:: cpp
+
+ _Uty io_event::transport_udata()
+ void io_event::transport_udata(_Uty uservalue)
+
+Remark
+>>>>>>>>>>>>>
+注意: 生命周期需要使用者自己维护，收到connect success存储userdata, 收到connect lost事件，清理userdata
+
