@@ -23,7 +23,7 @@ master_doc = 'index'
 
 # General information about the project
 project = 'yasio Documentation'
-copyright = '2012-2020 yasio. All rights reserved.'
+copyright = '2012-2020 yasio.org. All rights reserved.'
 author = 'HALX99,c4games.com'
 
 # Version info for the project, acts as replacement for |version| and |release|
