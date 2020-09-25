@@ -37,6 +37,8 @@ is_i18n = tags.has('i18n')
 
 exclude_patterns = ['_build']
 
+from sphinx.highlighting import lexers
+
 # Pygments (syntax highlighting) style to use
 pygments_style = 'sphinx'
 
