@@ -45,7 +45,7 @@ yasio 借鉴著名的boost网络库asio, 在保持轻量级的情况下，具备
    * 其他支持C++11,14,17标准的编译器
 
   * 架构: x86, x64, ARM等。
-  * 操作系统: Windows, macOS, Linux, iOS, Android等。
+  * 操作系统: Windows, macOS, Linux, FreeBSD, iOS, Android等。
 
 用法一览
 ----------------------
@@ -190,5 +190,5 @@ API文档
     api/index
 
 
-.. |ImageRelLink| image:: https://img.shields.io/badge/release-v3.33.5-blue.svg
+.. |ImageRelLink| image:: https://img.shields.io/badge/release-v3.33.6-blue.svg
 .. _ImageRelLink: https://github.com/yasio/yasio/releases
