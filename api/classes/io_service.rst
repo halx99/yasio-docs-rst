@@ -405,12 +405,12 @@ io_service::init_globals
 
 .. code-block:: cpp
 
- static void init_globals(print_fn_t print_fn)
+ static void init_globals(print_fn2_t print_fn)
 
 Parameters
 >>>>>>>>>>>>>>>>>>
-| *print_fn*
-| 自定义打印函数，
+| *print_fn2*
+| 自定义打印函数，v3.33.4之前的版本，类型是: print_fn_t
 
 Remark
 >>>>>>>>>>>>>>>>>>
