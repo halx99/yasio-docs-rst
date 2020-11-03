@@ -31,13 +31,15 @@ ibstream继承了所有ibstream_view关于二进制读取的接口。
    * - ibstream_view::reset
      - 重置输入数据
    * - ibstream_view::read_i
-     - 函数模板，写入数值数据，会自动转化为网络字节序
+     - 读取7bit Encoded Int变长存储
+   * - ibstream_view::read_byte
+     - 读取一个字节
    * - ibstream_view::read_i24
      - 读取24位有符号整数
    * - ibstream_view::read_u24
      - 读取24位无符号整数
-   * - ibstream_view::read_7b
-     - 读取7bit Encoded Int变长存储
+   * - ibstream_view::read_ix
+     - 函数模板，写入数值数据，会自动转化为网络字节序
    * - ibstream_view::read_v
      - 读取字节流数据，会先读取7bit编码的变长长度域
    * - ibstream_view::read_v32
@@ -46,8 +48,6 @@ ibstream继承了所有ibstream_view关于二进制读取的接口。
      - 读取字节流数据，使用16bit长度域
    * - ibstream_view::read_v8
      - 读取字节流数据，使用8bit长度域
-   * - ibstream_view::read_byte
-     - 读取一个字节
    * - ibstream_view::read_bytes
      - 读取字节流数据，无长度域
    * - ibstream_view::seek
@@ -56,8 +56,8 @@ ibstream继承了所有ibstream_view关于二进制读取的接口。
      - 获取stream总字节数
    * - ibstream_view::data
      - 获取字节数据指针
-   * - ibstream_view::sread_i
-     - 静态方法，在指定地址读取数值数据，会自动转化为网络字节序
+   * - ibstream_view::sread_ix
+     - 静态函数模板，在指定内存地址读取数值数据，会自动转化为网络字节序
 
 
 Example
@@ -68,10 +68,10 @@ Example
   ibstream_view ibs(event->packet().data(), event->packet().size());
   
   // 读取1字节整数
-  int8_t cmd = ibs.read_i<int8_t>();
+  int8_t cmd = ibs.read_ix<int8_t>();
   
   // 跳过4字节长度域
   ibs.seek(4, SEEK_CUR);
   
-  int16_t seq = ibs.read_i<int16_t>();
+  int16_t seq = ibs.read_ix<int16_t>();
   cxx17::string_view content = ibs.read_v();
