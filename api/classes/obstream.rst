@@ -26,9 +26,7 @@ obstream
    * - 函数名
      - 函数说明
    * - obstream::write_ix
-     - 写入7bit Encoded Int变长存储
-   * - obstream::write_ix64
-     - 写入7bit Encoded Int64变长存储
+     - 写入7bit Encoded Int变长存储, 函数模板，支持int和int64_t
    * - obstream::write_byte
      - 写入一个字节
    * - obstream::write
