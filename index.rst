@@ -35,7 +35,7 @@ yasio 借鉴著名的boost网络库asio, 在保持轻量级的情况下，具备
 * 支持SSL客户端，基于OpenSSL。
 * 支持非阻塞域名解析，基于c-ares。
 * 支持header only集成方式，意味着无需编译，直接像c++ stl一样包含头文件即可使用，使用预编译宏 `YASIO_HEADER_ONLY` 开启。
-* 提供非常方便使用的自动处理字节序的二进制序列化类obstream/ibstream
+* 提供非常方便使用的自动处理字节序的二进制序列化类obstream/ibstream, showcase: `CCUserDefault <https://github.com/c4games/engine-x/blob/master/cocos/base/CCUserDefault.cpp>`_
 * 跨平台性:
 
   * 编译器: 
