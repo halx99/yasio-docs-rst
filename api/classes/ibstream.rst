@@ -67,6 +67,7 @@ Example
 .. tabs::
  .. code-tab:: cpp
 
+  using namespace yasio;
   ibstream_view ibs(event->packet().data(), event->packet().size());
   
   // 读取1字节整数
@@ -76,4 +77,5 @@ Example
   ibs.seek(4, SEEK_CUR);
   
   int16_t seq = ibs.read<int16_t>();
-  cxx17::string_view content = ibs.read_v();
+  cxx17::string_view msg1 = ibs.read_v16();
+  cxx17::string_view msg2 = ibs.read_v();

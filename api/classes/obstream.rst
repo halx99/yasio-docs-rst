@@ -67,6 +67,7 @@ Example
 .. tabs::
  .. code-tab:: cpp
 
+  using namespace yasio;
   obstream obs;
 
   // 内存布局|-8bits-|
