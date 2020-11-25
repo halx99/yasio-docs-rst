@@ -27,7 +27,7 @@ obstream
      - 函数说明
    * - obstream::write_ix
      - 写入7bit Encoded Int变长存储
-  * - obstream::write_ix64
+   * - obstream::write_ix64
      - 写入7bit Encoded Int64变长存储
    * - obstream::write_byte
      - 写入一个字节
@@ -70,16 +70,20 @@ Example
   obstream obs;
 
   // 内存布局|-8bits-|
-  obs.write_ix<int8_t>(12);
+  obs.write<int8_t>(12);
   
   // 内存布局|-8bits-|-32bits-|
-  obs.push32(); 
+  obs.push32(); // 为长度字段预留4字节空间
   
   // 内存布局|-8bits-|-32bits-|-16bits-|
-  obs.write_ix<int16_t>(52013);
+  obs.write<int16_t>(52013);
   
-  // 内存布局|-8bits-|-32bits-|-16bits-|-8bits(length of the string)-|-88bits(the string)-|
-  obs.write_v8("hello world");
+  // 内存布局|-8bits-|-32bits-|-16bits-|-16bits(length of the string1)-|-88bits(the string1)-|
+  obs.write_v16("hello world");
+
+  // 内存布局|-8bits-|-32bits-|-16bits-|-16bits(length of the string1)-|-88bits(the string1)-|-
+  // |8bits(length of the string2)-|-88bits(the string2)-|
+  obs.write_v("hello world");
   
   // 将整包长度字节数写入最近一次push保留的4字节内存，完成封包，内存布局不变
   obs.pop32(obs.length());

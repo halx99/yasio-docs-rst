@@ -70,10 +70,10 @@ Example
   ibstream_view ibs(event->packet().data(), event->packet().size());
   
   // 读取1字节整数
-  int8_t cmd = ibs.read_ix<int8_t>();
+  int8_t cmd = ibs.read<int8_t>();
   
   // 跳过4字节长度域
   ibs.seek(4, SEEK_CUR);
   
-  int16_t seq = ibs.read_ix<int16_t>();
+  int16_t seq = ibs.read<int16_t>();
   cxx17::string_view content = ibs.read_v();
