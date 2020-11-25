@@ -25,24 +25,16 @@ obstream
 
    * - 函数名
      - 函数说明
-   * - obstream::write_i
+   * - obstream::write_ix
      - 写入7bit Encoded Int变长存储
+  * - obstream::write_ix64
+     - 写入7bit Encoded Int64变长存储
    * - obstream::write_byte
      - 写入一个字节
-   * - obstream::write_i24
-     - 写入24位有符号整数
-   * - obstream::write_u24
-     - 写入24位无符号整数
-   * - obstream::write_ix
-     - 函数模板，写入数值数据，会自动转化为网络字节序
+   * - obstream::write
+     - 函数模板，写入数值类型(bool,char,short,int,long long,float,double等)数据，会自动转化为网络字节序
    * - obstream::write_v
-     - 写入字节流数据，会先写入7bit编码的变长长度域
-   * - obstream::write_v32
-     - 写入字节流数据，使用32bit长度域
-   * - obstream::write_v16
-     - 写入字节流数据，使用16bit长度域
-   * - obstream::write_v8
-     - 写入字节流数据，使用8bit长度域
+     - 写入字节流数据，会先写入7bit Encoded Int编码的变长长度域
    * - obstream::write_bytes
      - 写入字节流数据，不含长度域
    * - obstream::buffer
@@ -53,12 +45,22 @@ obstream
      - 获取stream总字节数
    * - obstream::data
      - 获取字节数据指针
-   * - obstream::pwrite_ix
+   * - obstream::pwrite
      - 函数模板，在指定偏移位置写入数值数据，会自动转化为网络字节序
-   * - obstream::swrite_ix
+   * - obstream::swrite
      - 静态函数模板，在指定内存地址写入数值数据，会自动转化为网络字节序
    * - obstream::sub
      - 截取子stream，返回新obstream对象
+   * - obstream::write_v32
+     - 写入字节流数据，使用32bit长度域 (不常用)
+   * - obstream::write_v16
+     - 写入字节流数据，使用16bit长度域 (不常用)
+   * - obstream::write_v8
+     - 写入字节流数据，使用8bit长度域 (不常用)
+   * - obstream::write_i24
+     - 写入24位有符号整数 (不常用)
+   * - obstream::write_u24
+     - 写入24位无符号整数 (不常用)
 
 Example
 --------------------------
