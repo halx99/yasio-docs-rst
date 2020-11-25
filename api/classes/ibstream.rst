@@ -31,9 +31,7 @@ ibstream继承了所有ibstream_view关于二进制读取的接口。
    * - ibstream_view::reset
      - 重置输入数据
    * - ibstream_view::read_ix
-     - 读取7bit Encoded Int变长存储
-   * - ibstream_view::read_ix64
-     - 读取7bit Encoded Int64变长存储
+     - 读取7bit Encoded Int变长存储, 函数模板，支持int和int64_t
    * - ibstream_view::read_byte
      - 读取一个字节
    * - ibstream_view::read
