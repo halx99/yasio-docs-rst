@@ -50,7 +50,7 @@ yasio 借鉴著名的boost网络库asio, 在保持轻量级的情况下，具备
 
 用法一览
 ----------------------
-此简单例子向 ``ip138.com`` 发送http请求并打印返回结果
+此简单例子向 ``tool.chinaz.com`` 发送http请求并打印返回结果
 
 .. tabs::
  .. code-tab:: cpp
@@ -62,7 +62,7 @@ yasio 借鉴著名的boost网络库asio, 在保持轻量级的情况下，具备
   
   int main()
   {
-    io_service service({"www.ip138.com", 80});
+    io_service service({"tool.chinaz.com", 80});
     service.set_option(YOPT_S_DEFERRED_EVENT, 0); // 直接在网络线程分派网络事件
     service.start([&](event_ptr&& ev) {
       switch (ev->kind())
@@ -82,11 +82,11 @@ yasio 借鉴著名的boost网络库asio, 在保持轻量级的情况下，具备
               obstream obs;
               obs.write_bytes("GET /index.htm HTTP/1.1\r\n");
   
-              obs.write_bytes("Host: www.ip138.com\r\n");
+              obs.write_bytes("Host: tool.chinaz.com\r\n");
   
               obs.write_bytes("User-Agent: Mozilla/5.0 (Windows NT 10.0; "
                               "WOW64) AppleWebKit/537.36 (KHTML, like Gecko) "
-                              "Chrome/79.0.3945.117 Safari/537.36\r\n");
+                              "Chrome/87.0.4820.88 Safari/537.36\r\n");
               obs.write_bytes("Accept: */*;q=0.8\r\n");
               obs.write_bytes("Connection: Close\r\n\r\n");
   
@@ -107,7 +107,7 @@ yasio 借鉴著名的boost网络库asio, 在保持轻量级的情况下，具备
 .. tabs::
  .. code-tab:: lua
 
-  local ip138 = "www.ip138.com"
+  local ip138 = "tool.chinaz.com"
   local service = yasio.io_service.new({host=ip138, port=80})
   local respdata = ""
   -- 传入网络事件处理函数启动网络服务线程，网络事件有: 消息包，连接响应，连接丢失
