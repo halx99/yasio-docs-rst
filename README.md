@@ -1,4 +1,7 @@
 # docs-936
+
+**DEPRECATED**, 后续将在: https://github.com/yasio/docs-936 继续中文文档更新  
+
 yasio中文文档，站点地址: https://docs.yasio.org/ 
 
 [![Documentation Status](https://readthedocs.org/projects/yasio-docs/badge/?version=latest)](https://readthedocs.org/projects/yasio-docs/builds/)
